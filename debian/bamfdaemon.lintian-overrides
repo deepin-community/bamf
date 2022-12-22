@@ -1,0 +1,2 @@
+# the /usr/share/applications directory is needed by bamf, even if empty
+bamfdaemon: package-contains-empty-directory usr/share/applications/

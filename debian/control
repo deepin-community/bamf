@@ -1,0 +1,100 @@
+Source: bamf
+Section: libs
+Priority: optional
+Maintainer: Debian+Ubuntu MATE Packaging Team <debian-mate@lists.debian.org>
+Uploaders: Mike Gabriel <sunweaver@debian.org>,
+           Didier Roche <didrocks@ubuntu.com>,
+Build-Depends: dbus (>= 1.8),
+               debhelper-compat (=12),
+               gobject-introspection (>= 0.6.5-3),
+               gtk-doc-tools,
+               libgirepository1.0-dev,
+               libglib2.0-dev (>= 2.32.0),
+               libgtk-3-dev (>= 3.0.0),
+               libgtop2-dev,
+               libwnck-3-dev (>= 3.4.7),
+               mate-common,
+               python3-lxml,
+               valac,
+               xvfb,
+Standards-Version: 4.4.1
+Rules-Requires-Root: no
+Homepage: https://launchpad.net/bamf
+Vcs-Browser: https://salsa.debian.org/debian-mate-team/bamf
+Vcs-Git: https://salsa.debian.org/debian-mate-team/bamf.git
+
+Package: bamfdaemon
+Architecture: any
+Depends: libbamf3-2 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Multi-Arch: foreign
+Description: Window matching library - daemon
+ Bamf matches application windows to desktop files. It removes the
+ headache of applications matching into a simple DBus daemon and C
+ wrapper library. It currently features application matching at amazing
+ levels of accuracy (covering nearly every corner case).
+ .
+ This package contains the daemon used by the library and a GIO
+ module that facilitates the matching of applications started
+ through GDesktopAppInfo.
+
+Package: libbamf3-2
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Breaks: unity (<< 3.2.12),
+Pre-Depends: ${misc:Pre-Depends},
+Multi-Arch: same
+Description: Window matching library - shared library
+ Bamf matches application windows to desktop files. It removes the
+ headache of applications matching into a simple DBus daemon and C
+ wrapper library. It currently features application matching at amazing
+ levels of accuracy (covering nearly every corner case).
+ .
+ This package contains shared libraries to be used by applications.
+
+Package: libbamf3-dev
+Section: libdevel
+Architecture: any
+Depends: gir1.2-bamf-3 (= ${binary:Version}),
+         libbamf3-2 (= ${binary:Version}),
+         libglib2.0-dev (>= 2.30.0),
+         ${misc:Depends},
+Suggests: libbamf-doc,
+Description: Window matching library - development files
+ Bamf matches application windows to desktop files. It removes the
+ headache of applications matching into a simple DBus daemon and C
+ wrapper library. It currently features application matching at amazing
+ levels of accuracy (covering nearly every corner case).
+ .
+ This package contains files that are needed to build applications.
+
+Package: libbamf-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends},
+Suggests: devhelp,
+Description: Window matching library - documentation
+ Bamf matches application windows to desktop files. It removes the
+ headache of applications matching into a simple DBus daemon and C
+ wrapper library. It currently features application matching at amazing
+ levels of accuracy (covering nearly every corner case).
+ .
+ This package contains the Bamf documentation.
+
+Package: gir1.2-bamf-3
+Section: introspection
+Architecture: any
+Depends: ${gir:Depends},
+         ${misc:Depends},
+Description: GObject introspection data for the Bamf library
+ Bamf matches application windows to desktop files. It removes the
+ headache of applications matching into a simple DBus daemon and C
+ wrapper library. It currently features application matching at amazing
+ levels of accuracy (covering nearly every corner case).
+ .
+ This package contains introspection data for the Bamf library.
+ .
+ It can be used by packages using the GIRepository format to generate
+ dynamic bindings.

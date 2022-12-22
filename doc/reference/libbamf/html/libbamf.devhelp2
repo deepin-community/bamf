@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title="libbamf Reference Manual" link="index.html" author="" name="libbamf" version="2" language="c">
+  <chapters>
+    <sub name="Classes" link="ch01.html">
+      <sub name="BamfMatcher" link="BamfMatcher.html"/>
+      <sub name="BamfWindow" link="BamfWindow.html"/>
+      <sub name="BamfFactory" link="BamfFactory.html"/>
+      <sub name="BamfControl" link="BamfControl.html"/>
+      <sub name="BamfTab" link="BamfTab.html"/>
+      <sub name="BamfView" link="BamfView.html"/>
+      <sub name="BamfApplication" link="BamfApplication.html"/>
+    </sub>
+    <sub name="Object Hierarchy" link="object-tree.html"/>
+    <sub name="API Index" link="api-index-full.html"/>
+    <sub name="Annotation Glossary" link="annotation-glossary.html"/>
+  </chapters>
+  <functions>
+    <keyword type="function" name="bamf_matcher_get_default ()" link="BamfMatcher.html#bamf-matcher-get-default"/>
+    <keyword type="function" name="bamf_matcher_get_active_application ()" link="BamfMatcher.html#bamf-matcher-get-active-application"/>
+    <keyword type="function" name="bamf_matcher_get_active_window ()" link="BamfMatcher.html#bamf-matcher-get-active-window"/>
+    <keyword type="function" name="bamf_matcher_get_window_for_xid ()" link="BamfMatcher.html#bamf-matcher-get-window-for-xid"/>
+    <keyword type="function" name="bamf_matcher_get_application_for_xid ()" link="BamfMatcher.html#bamf-matcher-get-application-for-xid"/>
+    <keyword type="function" name="bamf_matcher_get_application_for_window ()" link="BamfMatcher.html#bamf-matcher-get-application-for-window"/>
+    <keyword type="function" name="bamf_matcher_application_is_running ()" link="BamfMatcher.html#bamf-matcher-application-is-running"/>
+    <keyword type="function" name="bamf_matcher_get_applications ()" link="BamfMatcher.html#bamf-matcher-get-applications"/>
+    <keyword type="function" name="bamf_matcher_register_favorites ()" link="BamfMatcher.html#bamf-matcher-register-favorites"/>
+    <keyword type="function" name="bamf_matcher_get_running_applications ()" link="BamfMatcher.html#bamf-matcher-get-running-applications"/>
+    <keyword type="function" name="bamf_matcher_get_tabs ()" link="BamfMatcher.html#bamf-matcher-get-tabs"/>
+    <keyword type="function" name="bamf_matcher_get_xids_for_application ()" link="BamfMatcher.html#bamf-matcher-get-xids-for-application"/>
+    <keyword type="function" name="bamf_matcher_get_windows ()" link="BamfMatcher.html#bamf-matcher-get-windows"/>
+    <keyword type="function" name="bamf_matcher_get_window_stack_for_monitor ()" link="BamfMatcher.html#bamf-matcher-get-window-stack-for-monitor"/>
+    <keyword type="function" name="bamf_matcher_get_application_for_desktop_file ()" link="BamfMatcher.html#bamf-matcher-get-application-for-desktop-file"/>
+    <keyword type="macro" name="BAMF_MATCHER_SIGNAL_VIEW_OPENED" link="BamfMatcher.html#BAMF-MATCHER-SIGNAL-VIEW-OPENED:CAPS"/>
+    <keyword type="macro" name="BAMF_MATCHER_SIGNAL_VIEW_CLOSED" link="BamfMatcher.html#BAMF-MATCHER-SIGNAL-VIEW-CLOSED:CAPS"/>
+    <keyword type="macro" name="BAMF_MATCHER_SIGNAL_ACTIVE_APPLICATION_CHANGED" link="BamfMatcher.html#BAMF-MATCHER-SIGNAL-ACTIVE-APPLICATION-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_MATCHER_SIGNAL_ACTIVE_WINDOW_CHANGED" link="BamfMatcher.html#BAMF-MATCHER-SIGNAL-ACTIVE-WINDOW-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_MATCHER_SIGNAL_STACKING_ORDER_CHANGED" link="BamfMatcher.html#BAMF-MATCHER-SIGNAL-STACKING-ORDER-CHANGED:CAPS"/>
+    <keyword type="signal" name="The “active-application-changed” signal" link="BamfMatcher.html#BamfMatcher-active-application-changed"/>
+    <keyword type="signal" name="The “active-window-changed” signal" link="BamfMatcher.html#BamfMatcher-active-window-changed"/>
+    <keyword type="signal" name="The “stacking-order-changed” signal" link="BamfMatcher.html#BamfMatcher-stacking-order-changed"/>
+    <keyword type="signal" name="The “view-closed” signal" link="BamfMatcher.html#BamfMatcher-view-closed"/>
+    <keyword type="signal" name="The “view-opened” signal" link="BamfMatcher.html#BamfMatcher-view-opened"/>
+    <keyword type="function" name="bamf_window_get_transient ()" link="BamfWindow.html#bamf-window-get-transient"/>
+    <keyword type="function" name="bamf_window_get_window_type ()" link="BamfWindow.html#bamf-window-get-window-type"/>
+    <keyword type="function" name="bamf_window_get_xid ()" link="BamfWindow.html#bamf-window-get-xid"/>
+    <keyword type="function" name="bamf_window_get_pid ()" link="BamfWindow.html#bamf-window-get-pid"/>
+    <keyword type="function" name="bamf_window_get_monitor ()" link="BamfWindow.html#bamf-window-get-monitor"/>
+    <keyword type="function" name="bamf_window_get_utf8_prop ()" link="BamfWindow.html#bamf-window-get-utf8-prop"/>
+    <keyword type="function" name="bamf_window_maximized ()" link="BamfWindow.html#bamf-window-maximized"/>
+    <keyword type="function" name="bamf_window_last_active ()" link="BamfWindow.html#bamf-window-last-active"/>
+    <keyword type="macro" name="BAMF_WINDOW_SIGNAL_MONITOR_CHANGED" link="BamfWindow.html#BAMF-WINDOW-SIGNAL-MONITOR-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_WINDOW_SIGNAL_MAXIMIZED_CHANGED" link="BamfWindow.html#BAMF-WINDOW-SIGNAL-MAXIMIZED-CHANGED:CAPS"/>
+    <keyword type="enum" name="enum BamfWindowType" link="BamfWindow.html#BamfWindowType"/>
+    <keyword type="enum" name="enum BamfWindowMaximizationType" link="BamfWindow.html#BamfWindowMaximizationType"/>
+    <keyword type="signal" name="The “maximized-changed” signal" link="BamfWindow.html#BamfWindow-maximized-changed"/>
+    <keyword type="signal" name="The “monitor-changed” signal" link="BamfWindow.html#BamfWindow-monitor-changed"/>
+    <keyword type="enum" name="enum BamfFactoryViewType" link="BamfFactory.html#BamfFactoryViewType"/>
+    <keyword type="function" name="bamf_control_get_default ()" link="BamfControl.html#bamf-control-get-default"/>
+    <keyword type="function" name="bamf_control_insert_desktop_file ()" link="BamfControl.html#bamf-control-insert-desktop-file"/>
+    <keyword type="function" name="bamf_control_create_local_desktop_file ()" link="BamfControl.html#bamf-control-create-local-desktop-file"/>
+    <keyword type="function" name="bamf_control_register_application_for_pid ()" link="BamfControl.html#bamf-control-register-application-for-pid"/>
+    <keyword type="function" name="bamf_control_set_approver_behavior ()" link="BamfControl.html#bamf-control-set-approver-behavior"/>
+    <keyword type="macro" name="BAMF_TAB_CONST()" link="BamfTab.html#BAMF-TAB-CONST:CAPS"/>
+    <keyword type="function" name="BamfTabPreviewReadyCallback ()" link="BamfTab.html#BamfTabPreviewReadyCallback"/>
+    <keyword type="function" name="bamf_tab_raise ()" link="BamfTab.html#bamf-tab-raise"/>
+    <keyword type="function" name="bamf_tab_close ()" link="BamfTab.html#bamf-tab-close"/>
+    <keyword type="function" name="bamf_tab_request_preview ()" link="BamfTab.html#bamf-tab-request-preview"/>
+    <keyword type="function" name="bamf_tab_get_desktop_name ()" link="BamfTab.html#bamf-tab-get-desktop-name"/>
+    <keyword type="function" name="bamf_tab_get_location ()" link="BamfTab.html#bamf-tab-get-location"/>
+    <keyword type="function" name="bamf_tab_get_xid ()" link="BamfTab.html#bamf-tab-get-xid"/>
+    <keyword type="function" name="bamf_tab_get_is_foreground_tab ()" link="BamfTab.html#bamf-tab-get-is-foreground-tab"/>
+    <keyword type="property" name="The “desktop-id” property" link="BamfTab.html#BamfTab--desktop-id"/>
+    <keyword type="property" name="The “is-foreground-tab” property" link="BamfTab.html#BamfTab--is-foreground-tab"/>
+    <keyword type="property" name="The “location” property" link="BamfTab.html#BamfTab--location"/>
+    <keyword type="property" name="The “xid” property" link="BamfTab.html#BamfTab--xid"/>
+    <keyword type="function" name="bamf_view_get_children ()" link="BamfView.html#bamf-view-get-children"/>
+    <keyword type="function" name="bamf_view_peek_children ()" link="BamfView.html#bamf-view-peek-children" since="0.5.2"/>
+    <keyword type="function" name="bamf_view_has_child ()" link="BamfView.html#bamf-view-has-child"/>
+    <keyword type="function" name="bamf_view_is_closed ()" link="BamfView.html#bamf-view-is-closed"/>
+    <keyword type="function" name="bamf_view_is_active ()" link="BamfView.html#bamf-view-is-active"/>
+    <keyword type="function" name="bamf_view_is_starting ()" link="BamfView.html#bamf-view-is-starting"/>
+    <keyword type="function" name="bamf_view_is_running ()" link="BamfView.html#bamf-view-is-running"/>
+    <keyword type="function" name="bamf_view_is_urgent ()" link="BamfView.html#bamf-view-is-urgent"/>
+    <keyword type="function" name="bamf_view_is_user_visible ()" link="BamfView.html#bamf-view-is-user-visible" since="0.4.0"/>
+    <keyword type="function" name="bamf_view_get_name ()" link="BamfView.html#bamf-view-get-name"/>
+    <keyword type="function" name="bamf_view_get_icon ()" link="BamfView.html#bamf-view-get-icon"/>
+    <keyword type="function" name="bamf_view_get_view_type ()" link="BamfView.html#bamf-view-get-view-type"/>
+    <keyword type="function" name="bamf_view_set_sticky ()" link="BamfView.html#bamf-view-set-sticky"/>
+    <keyword type="function" name="bamf_view_is_sticky ()" link="BamfView.html#bamf-view-is-sticky"/>
+    <keyword type="function" name="bamf_view_get_click_suggestion ()" link="BamfView.html#bamf-view-get-click-suggestion" deprecated=""/>
+    <keyword type="function" name="bamf_view_user_visible ()" link="BamfView.html#bamf-view-user-visible" deprecated="0.4.0"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_ACTIVE_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-ACTIVE-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_RUNNING_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-RUNNING-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_STARTING_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-STARTING-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_URGENT_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-URGENT-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_USER_VISIBLE_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-USER-VISIBLE-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_NAME_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-NAME-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_ICON_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-ICON-CHANGED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_CHILD_ADDED" link="BamfView.html#BAMF-VIEW-SIGNAL-CHILD-ADDED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_CHILD_REMOVED" link="BamfView.html#BAMF-VIEW-SIGNAL-CHILD-REMOVED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_CHILD_MOVED" link="BamfView.html#BAMF-VIEW-SIGNAL-CHILD-MOVED:CAPS"/>
+    <keyword type="macro" name="BAMF_VIEW_SIGNAL_CLOSED" link="BamfView.html#BAMF-VIEW-SIGNAL-CLOSED:CAPS"/>
+    <keyword type="enum" name="enum BamfClickBehavior" link="BamfView.html#BamfClickBehavior"/>
+    <keyword type="property" name="The “active” property" link="BamfView.html#BamfView--active"/>
+    <keyword type="property" name="The “path” property" link="BamfView.html#BamfView--path"/>
+    <keyword type="property" name="The “running” property" link="BamfView.html#BamfView--running"/>
+    <keyword type="property" name="The “starting” property" link="BamfView.html#BamfView--starting"/>
+    <keyword type="property" name="The “urgent” property" link="BamfView.html#BamfView--urgent"/>
+    <keyword type="property" name="The “user-visible” property" link="BamfView.html#BamfView--user-visible"/>
+    <keyword type="signal" name="The “active-changed” signal" link="BamfView.html#BamfView-active-changed"/>
+    <keyword type="signal" name="The “child-added” signal" link="BamfView.html#BamfView-child-added"/>
+    <keyword type="signal" name="The “child-moved” signal" link="BamfView.html#BamfView-child-moved"/>
+    <keyword type="signal" name="The “child-removed” signal" link="BamfView.html#BamfView-child-removed"/>
+    <keyword type="signal" name="The “closed” signal" link="BamfView.html#BamfView-closed"/>
+    <keyword type="signal" name="The “icon-changed” signal" link="BamfView.html#BamfView-icon-changed"/>
+    <keyword type="signal" name="The “name-changed” signal" link="BamfView.html#BamfView-name-changed"/>
+    <keyword type="signal" name="The “running-changed” signal" link="BamfView.html#BamfView-running-changed"/>
+    <keyword type="signal" name="The “starting-changed” signal" link="BamfView.html#BamfView-starting-changed"/>
+    <keyword type="signal" name="The “urgent-changed” signal" link="BamfView.html#BamfView-urgent-changed"/>
+    <keyword type="signal" name="The “user-visible-changed” signal" link="BamfView.html#BamfView-user-visible-changed"/>
+    <keyword type="function" name="bamf_application_get_application_type ()" link="BamfApplication.html#bamf-application-get-application-type"/>
+    <keyword type="function" name="bamf_application_get_desktop_file ()" link="BamfApplication.html#bamf-application-get-desktop-file"/>
+    <keyword type="function" name="bamf_application_get_supported_mime_types ()" link="BamfApplication.html#bamf-application-get-supported-mime-types"/>
+    <keyword type="function" name="bamf_application_get_windows ()" link="BamfApplication.html#bamf-application-get-windows"/>
+    <keyword type="function" name="bamf_application_get_xids ()" link="BamfApplication.html#bamf-application-get-xids"/>
+    <keyword type="function" name="bamf_application_get_focusable_child ()" link="BamfApplication.html#bamf-application-get-focusable-child"/>
+    <keyword type="function" name="bamf_application_get_show_menu_stubs ()" link="BamfApplication.html#bamf-application-get-show-menu-stubs"/>
+    <keyword type="function" name="bamf_application_get_window_for_xid ()" link="BamfApplication.html#bamf-application-get-window-for-xid" since="0.5.2"/>
+    <keyword type="function" name="bamf_application_get_application_menu ()" link="BamfApplication.html#bamf-application-get-application-menu" deprecated="0.5.0"/>
+    <keyword type="macro" name="BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED" link="BamfApplication.html#BAMF-APPLICATION-SIGNAL-DESKTOP-FILE-UPDATED:CAPS"/>
+    <keyword type="macro" name="BAMF_APPLICATION_SIGNAL_WINDOW_ADDED" link="BamfApplication.html#BAMF-APPLICATION-SIGNAL-WINDOW-ADDED:CAPS"/>
+    <keyword type="macro" name="BAMF_APPLICATION_SIGNAL_WINDOW_REMOVED" link="BamfApplication.html#BAMF-APPLICATION-SIGNAL-WINDOW-REMOVED:CAPS"/>
+    <keyword type="signal" name="The “desktop-file-updated” signal" link="BamfApplication.html#BamfApplication-desktop-file-updated"/>
+    <keyword type="signal" name="The “window-added” signal" link="BamfApplication.html#BamfApplication-window-added"/>
+    <keyword type="signal" name="The “window-removed” signal" link="BamfApplication.html#BamfApplication-window-removed"/>
+    <keyword type="constant" name="BAMF_WINDOW_NORMAL" link="BamfWindow.html#BAMF-WINDOW-NORMAL:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_DESKTOP" link="BamfWindow.html#BAMF-WINDOW-DESKTOP:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_DOCK" link="BamfWindow.html#BAMF-WINDOW-DOCK:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_DIALOG" link="BamfWindow.html#BAMF-WINDOW-DIALOG:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_TOOLBAR" link="BamfWindow.html#BAMF-WINDOW-TOOLBAR:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_MENU" link="BamfWindow.html#BAMF-WINDOW-MENU:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_UTILITY" link="BamfWindow.html#BAMF-WINDOW-UTILITY:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_SPLASHSCREEN" link="BamfWindow.html#BAMF-WINDOW-SPLASHSCREEN:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_UNKNOWN" link="BamfWindow.html#BAMF-WINDOW-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_FLOATING" link="BamfWindow.html#BAMF-WINDOW-FLOATING:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_HORIZONTAL_MAXIMIZED" link="BamfWindow.html#BAMF-WINDOW-HORIZONTAL-MAXIMIZED:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_VERTICAL_MAXIMIZED" link="BamfWindow.html#BAMF-WINDOW-VERTICAL-MAXIMIZED:CAPS"/>
+    <keyword type="constant" name="BAMF_WINDOW_MAXIMIZED" link="BamfWindow.html#BAMF-WINDOW-MAXIMIZED:CAPS"/>
+    <keyword type="constant" name="BAMF_FACTORY_VIEW" link="BamfFactory.html#BAMF-FACTORY-VIEW:CAPS"/>
+    <keyword type="constant" name="BAMF_FACTORY_WINDOW" link="BamfFactory.html#BAMF-FACTORY-WINDOW:CAPS"/>
+    <keyword type="constant" name="BAMF_FACTORY_APPLICATION" link="BamfFactory.html#BAMF-FACTORY-APPLICATION:CAPS"/>
+    <keyword type="constant" name="BAMF_FACTORY_TAB" link="BamfFactory.html#BAMF-FACTORY-TAB:CAPS"/>
+    <keyword type="constant" name="BAMF_FACTORY_NONE" link="BamfFactory.html#BAMF-FACTORY-NONE:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_NONE" link="BamfView.html#BAMF-CLICK-BEHAVIOR-NONE:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_OPEN" link="BamfView.html#BAMF-CLICK-BEHAVIOR-OPEN:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_FOCUS" link="BamfView.html#BAMF-CLICK-BEHAVIOR-FOCUS:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_FOCUS_ALL" link="BamfView.html#BAMF-CLICK-BEHAVIOR-FOCUS-ALL:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_MINIMIZE" link="BamfView.html#BAMF-CLICK-BEHAVIOR-MINIMIZE:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_RESTORE" link="BamfView.html#BAMF-CLICK-BEHAVIOR-RESTORE:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_RESTORE_ALL" link="BamfView.html#BAMF-CLICK-BEHAVIOR-RESTORE-ALL:CAPS"/>
+    <keyword type="constant" name="BAMF_CLICK_BEHAVIOR_PICKER" link="BamfView.html#BAMF-CLICK-BEHAVIOR-PICKER:CAPS"/>
+  </functions>
+</book>

@@ -1,0 +1,5 @@
+usr/include/libbamf3/libbamf/
+usr/lib/*/libbamf3.so
+usr/lib/*/pkgconfig/libbamf3.pc
+usr/share/gir-1.0/
+usr/share/vala/vapi/

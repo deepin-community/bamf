@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>BamfControl: libbamf Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="libbamf Reference Manual">
+<link rel="up" href="ch01.html" title="Classes">
+<link rel="prev" href="BamfFactory.html" title="BamfFactory">
+<link rel="next" href="BamfTab.html" title="BamfTab">
+<meta name="generator" content="GTK-Doc V1.28 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#BamfControl.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#BamfControl.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="BamfFactory.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="BamfTab.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="BamfControl"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="BamfControl.top_of_page"></a>BamfControl</span></h2>
+<p>BamfControl — The base class for all controls</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="BamfControl.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="BamfControl.html" title="BamfControl"><span class="returnvalue">BamfControl</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="BamfControl.html#bamf-control-get-default" title="bamf_control_get_default ()">bamf_control_get_default</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="BamfControl.html#bamf-control-insert-desktop-file" title="bamf_control_insert_desktop_file ()">bamf_control_insert_desktop_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="BamfControl.html#bamf-control-create-local-desktop-file" title="bamf_control_create_local_desktop_file ()">bamf_control_create_local_desktop_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="BamfControl.html#bamf-control-register-application-for-pid" title="bamf_control_register_application_for_pid ()">bamf_control_register_application_for_pid</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="BamfControl.html#bamf-control-set-approver-behavior" title="bamf_control_set_approver_behavior ()">bamf_control_set_approver_behavior</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="BamfControl.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <span class="lineart">╰──</span> BamfControl
+</pre>
+</div>
+<div class="refsect1">
+<a name="BamfControl.description"></a><h2>Description</h2>
+<p><a class="link" href="BamfControl.html" title="BamfControl"><span class="type">BamfControl</span></a> is the base class that all controls need to derive from.</p>
+</div>
+<div class="refsect1">
+<a name="BamfControl.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="bamf-control-get-default"></a><h3>bamf_control_get_default ()</h3>
+<pre class="programlisting"><a class="link" href="BamfControl.html" title="BamfControl"><span class="returnvalue">BamfControl</span></a> *
+bamf_control_get_default (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="refsect3">
+<a name="bamf-control-get-default.returns"></a><h4>Returns</h4>
+<p>The default <a class="link" href="BamfControl.html" title="BamfControl"><span class="type">BamfControl</span></a> reference. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-control-insert-desktop-file"></a><h3>bamf_control_insert_desktop_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+bamf_control_insert_desktop_file (<em class="parameter"><code><a class="link" href="BamfControl.html" title="BamfControl"><span class="type">BamfControl</span></a> *control</code></em>,
+                                  <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *desktop_file</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-control-create-local-desktop-file"></a><h3>bamf_control_create_local_desktop_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+bamf_control_create_local_desktop_file
+                               (<em class="parameter"><code><a class="link" href="BamfControl.html" title="BamfControl"><span class="type">BamfControl</span></a> *control</code></em>,
+                                <em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-control-register-application-for-pid"></a><h3>bamf_control_register_application_for_pid ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+bamf_control_register_application_for_pid
+                               (<em class="parameter"><code><a class="link" href="BamfControl.html" title="BamfControl"><span class="type">BamfControl</span></a> *control</code></em>,
+                                <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *desktop_file</code></em>,
+                                <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pid</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-control-set-approver-behavior"></a><h3>bamf_control_set_approver_behavior ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+bamf_control_set_approver_behavior (<em class="parameter"><code><a class="link" href="BamfControl.html" title="BamfControl"><span class="type">BamfControl</span></a> *control</code></em>,
+                                    <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> behavior</code></em>);</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="BamfControl.other_details"></a><h2>Types and Values</h2>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.28</div>
+</body>
+</html>

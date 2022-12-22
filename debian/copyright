@@ -1,0 +1,259 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Bamf
+Upstream-Contact: Jason Smith <jason.smith@canonical.com>
+Source: https://code.launchpad.net/bamf
+
+Files: lib/libbamf-private/bamf-private.h
+ lib/libbamf/bamf-view-private.h
+ src/bamf-application.c
+ src/bamf-application.h
+ src/bamf-control.c
+ src/bamf-control.h
+ src/bamf-daemon.c
+ src/bamf-daemon.h
+ src/bamf-legacy-screen-private.h
+ src/bamf-legacy-screen.c
+ src/bamf-legacy-screen.h
+ src/bamf-legacy-window-test.c
+ src/bamf-legacy-window-test.h
+ src/bamf-legacy-window.c
+ src/bamf-legacy-window.h
+ src/bamf-matcher-private.h
+ src/bamf-matcher.c
+ src/bamf-matcher.h
+ src/bamf-tab.c
+ src/bamf-tab.h
+ src/bamf-view.c
+ src/bamf-view.h
+ src/bamf-window.c
+ src/bamf-window.h
+ src/bamf-xutils.c
+ src/bamf-xutils.h
+ src/main.c
+ src/main.h
+ tests/bamfdaemon/test-application.c
+ tests/bamfdaemon/test-bamf.c
+ tests/bamfdaemon/test-matcher.c
+ tests/bamfdaemon/test-view.c
+ tests/bamfdaemon/test-window.c
+ tests/libbamf/test-application.c
+ tests/libbamf/test-libbamf.c
+ tests/libbamf/test-matcher.c
+Copyright: 2009, Canonical Ltd
+  2009-2011, Canonical Ltd
+  2009-2012, Canonical Ltd
+  2009-2013, Canonical Ltd
+  2010, Canonical Ltd
+  2010-2011, Canonical Ltd
+  2010-2012, Canonical Ltd
+  2010-2013, Canonical Ltd
+  2011, Canonical Ltd
+  2011-2013, Canonical Ltd
+  2012, Canonical Ltd
+  2013, Canonical Ltd
+License: GPL-3
+
+Files: lib/libbamf/bamf-application.c
+ lib/libbamf/bamf-application.h
+ lib/libbamf/bamf-control.c
+ lib/libbamf/bamf-control.h
+ lib/libbamf/bamf-factory.c
+ lib/libbamf/bamf-factory.h
+ lib/libbamf/bamf-matcher.c
+ lib/libbamf/bamf-matcher.h
+ lib/libbamf/bamf-tab.c
+ lib/libbamf/bamf-tab.h
+ lib/libbamf/bamf-view.c
+ lib/libbamf/bamf-view.h
+ lib/libbamf/bamf-window.c
+ lib/libbamf/bamf-window.h
+ lib/libbamf/libbamf.h
+Copyright: 2010, Canonical Ltd
+  2010-2011, Canonical Ltd
+  2010-2012, Canonical Ltd
+  2010-2013, Canonical Ltd
+License: LGPL-2.1 or LGPL-3
+
+Files: autogen.sh
+ tests/gtester.xsl
+ tests/gtester2xunit.py
+ tests/run-xvfb.sh
+Copyright: *No copyright*
+License: GPL-3
+Comment:
+ Using license as found in COPYING file.
+
+Files: lib/libbamf/bamf-application-private.h
+Copyright: 2012, Marco Trevisan (Treviño)
+License: GPL-2+
+
+Files: doc/Makefile.am
+ doc/reference/Makefile.am
+ doc/reference/libbamf/Makefile.am
+ doc/reference/libbamf/html/BamfApplication.html
+ doc/reference/libbamf/html/BamfControl.html
+ doc/reference/libbamf/html/BamfFactory.html
+ doc/reference/libbamf/html/BamfMatcher.html
+ doc/reference/libbamf/html/BamfTab.html
+ doc/reference/libbamf/html/BamfView.html
+ doc/reference/libbamf/html/BamfWindow.html
+ doc/reference/libbamf/html/annotation-glossary.html
+ doc/reference/libbamf/html/api-index-full.html
+ doc/reference/libbamf/html/ch01.html
+ doc/reference/libbamf/html/home.png
+ doc/reference/libbamf/html/index.html
+ doc/reference/libbamf/html/left-insensitive.png
+ doc/reference/libbamf/html/left.png
+ doc/reference/libbamf/html/libbamf.devhelp2
+ doc/reference/libbamf/html/object-tree.html
+ doc/reference/libbamf/html/right-insensitive.png
+ doc/reference/libbamf/html/right.png
+ doc/reference/libbamf/html/style.css
+ doc/reference/libbamf/html/up-insensitive.png
+ doc/reference/libbamf/html/up.png
+ doc/reference/libbamf/libbamf-docs.sgml
+ doc/reference/libbamf/libbamf-overrides.txt
+ doc/reference/libbamf/libbamf-sections.txt
+ doc/reference/libbamf/libbamf.types
+ lib/libbamf-private/Makefile.am
+ lib/libbamf-private/Makefile.am.notparallel
+ lib/libbamf-private/org.ayatana.bamf.view.xml
+ lib/libbamf-private/org.ayatana.bamf.xml
+ lib/libbamf/Makefile.am
+ lib/libbamf/libbamf3.pc.in
+ tests/libbamf/Makefile.am
+Copyright: 2009-2016, Canonical Ltd.
+License: LGPL-2.1 or LGPL-3
+Comment:
+ Assuming same license as found in libbamf code files.
+ Assuming Canonical Ltd. as copyright holder for all those files.
+
+Files: AUTHORS
+ ChangeLog
+ INSTALL
+ Makefile.am
+ Makefile.am.coverage
+ NEWS
+ README
+ TODO
+ build.rules.mk
+ configure.ac
+ data/Makefile.am
+ data/org.ayatana.bamf.service.in
+ data/bamfdaemon-dbus-runner.in
+ data/bamfdaemon.conf.in
+ data/bamfdaemon.service.in
+ src/Makefile.am
+ tests/Makefile.am
+ tests/Makefile.am.gtests
+ tests/bamfdaemon/Makefile.am
+ tests/data/bamf-qml-app.desktop
+ tests/data/bin/gedit
+ tests/data/bin/unity-control-center
+ tests/data/bin/libreoffice
+ tests/data/bin/mime-test-text-editor
+ tests/data/bin/qmlscene
+ tests/data/bin/test-bamf-app
+ tests/data/bin/unity-webapps-runner
+ tests/data/full-name.desktop
+ tests/data/unity-control-center.desktop
+ tests/data/unity-display-panel.desktop
+ tests/data/unity-mouse-panel.desktop
+ tests/data/icedtea-netx-javaws.desktop
+ tests/data/icon.desktop
+ tests/data/icons/python.png
+ tests/data/icons/python2.7.png
+ tests/data/icons/test-bamf-icon.png
+ tests/data/icons/test-bamf-pixmap.png
+ tests/data/invalid-type.desktop
+ tests/data/libreoffice-base.desktop
+ tests/data/libreoffice-calc.desktop
+ tests/data/libreoffice-draw.desktop
+ tests/data/libreoffice-impress.desktop
+ tests/data/libreoffice-math.desktop
+ tests/data/libreoffice-startcenter.desktop
+ tests/data/libreoffice-writer.desktop
+ tests/data/mime-types.desktop
+ tests/data/no-display/test-bamf-app.desktop
+ tests/data/no-icon.desktop
+ tests/data/test-bamf-app-display.desktop
+ tests/data/test-bamf-app-no-display.desktop
+ tests/data/test-bamf-app.desktop
+ tests/data/ubuntu-web-app.desktop
+Copyright: 2009-2016, Canonical Ltd.
+License: GPL-3
+Comment:
+ Assuming same license as found in bamfdaemon code files.
+ Assuming Canonical Ltd. as copyright holder for all those files.
+
+Files: debian/*
+Copyright: 2015, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+     2015, Rico Tzschichholz <ricotz@ubuntu.com>
+     2010, Canonical Ltd.
+License: GPL-2+ or GPL-3 or LGPL-2.1 or LGPL-3
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+License: GPL-3
+ This software is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the
+ Free Software Foundation; version 3 only of the License.
+ .
+ This package is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this package; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ can be found in `/usr/share/common-licenses/GPL-3'.
+
+License: LGPL-2.1
+ This software is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; version 2.1 only of the License.
+ .
+ This software is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+ General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public License
+ along with this package; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License can be found in `/usr/share/common-licenses/LGPL-2.1'.
+
+License: LGPL-3
+ This software is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; version 3 only of the License.
+ .
+ This software is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+ General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public License
+ along with this package; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License can be found in `/usr/share/common-licenses/LGPL-3'.

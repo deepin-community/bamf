@@ -1,0 +1,976 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>BamfView: libbamf Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="libbamf Reference Manual">
+<link rel="up" href="ch01.html" title="Classes">
+<link rel="prev" href="BamfTab.html" title="BamfTab">
+<link rel="next" href="BamfApplication.html" title="BamfApplication">
+<meta name="generator" content="GTK-Doc V1.28 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#BamfView.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#BamfView.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#BamfView.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#BamfView.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="BamfTab.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="BamfApplication.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="BamfView"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="BamfView.top_of_page"></a>BamfView</span></h2>
+<p>BamfView — The base class for all views</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="BamfView.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-get-children" title="bamf_view_get_children ()">bamf_view_get_children</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-peek-children" title="bamf_view_peek_children ()">bamf_view_peek_children</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-has-child" title="bamf_view_has_child ()">bamf_view_has_child</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-is-closed" title="bamf_view_is_closed ()">bamf_view_is_closed</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-is-active" title="bamf_view_is_active ()">bamf_view_is_active</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-is-starting" title="bamf_view_is_starting ()">bamf_view_is_starting</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-is-running" title="bamf_view_is_running ()">bamf_view_is_running</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-is-urgent" title="bamf_view_is_urgent ()">bamf_view_is_urgent</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-is-user-visible" title="bamf_view_is_user_visible ()">bamf_view_is_user_visible</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-get-name" title="bamf_view_get_name ()">bamf_view_get_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-get-icon" title="bamf_view_get_icon ()">bamf_view_get_icon</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-get-view-type" title="bamf_view_get_view_type ()">bamf_view_get_view_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-set-sticky" title="bamf_view_set_sticky ()">bamf_view_set_sticky</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-is-sticky" title="bamf_view_is_sticky ()">bamf_view_is_sticky</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="BamfView.html#BamfClickBehavior" title="enum BamfClickBehavior"><span class="returnvalue">BamfClickBehavior</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-get-click-suggestion" title="bamf_view_get_click_suggestion ()">bamf_view_get_click_suggestion</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="BamfView.html#bamf-view-user-visible" title="bamf_view_user_visible ()">bamf_view_user_visible</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="BamfView.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="BamfView.html#BamfView--active" title="The “active” property">active</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
+<td class="property_name"><a class="link" href="BamfView.html#BamfView--path" title="The “path” property">path</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="BamfView.html#BamfView--running" title="The “running” property">running</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="BamfView.html#BamfView--starting" title="The “starting” property">starting</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="BamfView.html#BamfView--urgent" title="The “urgent” property">urgent</a></td>
+<td class="property_flags">Read</td>
+</tr>
+<tr>
+<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="BamfView.html#BamfView--user-visible" title="The “user-visible” property">user-visible</a></td>
+<td class="property_flags">Read</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="BamfView.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-active-changed" title="The “active-changed” signal">active-changed</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-child-added" title="The “child-added” signal">child-added</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-child-moved" title="The “child-moved” signal">child-moved</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-child-removed" title="The “child-removed” signal">child-removed</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-closed" title="The “closed” signal">closed</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-icon-changed" title="The “icon-changed” signal">icon-changed</a></td>
+<td class="signal_flags"> </td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-name-changed" title="The “name-changed” signal">name-changed</a></td>
+<td class="signal_flags"> </td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-running-changed" title="The “running-changed” signal">running-changed</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-starting-changed" title="The “starting-changed” signal">starting-changed</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-urgent-changed" title="The “urgent-changed” signal">urgent-changed</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="BamfView.html#BamfView-user-visible-changed" title="The “user-visible-changed” signal">user-visible-changed</a></td>
+<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="BamfView.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-ACTIVE-CHANGED:CAPS" title="BAMF_VIEW_SIGNAL_ACTIVE_CHANGED">BAMF_VIEW_SIGNAL_ACTIVE_CHANGED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-RUNNING-CHANGED:CAPS" title="BAMF_VIEW_SIGNAL_RUNNING_CHANGED">BAMF_VIEW_SIGNAL_RUNNING_CHANGED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-STARTING-CHANGED:CAPS" title="BAMF_VIEW_SIGNAL_STARTING_CHANGED">BAMF_VIEW_SIGNAL_STARTING_CHANGED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-URGENT-CHANGED:CAPS" title="BAMF_VIEW_SIGNAL_URGENT_CHANGED">BAMF_VIEW_SIGNAL_URGENT_CHANGED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-USER-VISIBLE-CHANGED:CAPS" title="BAMF_VIEW_SIGNAL_USER_VISIBLE_CHANGED">BAMF_VIEW_SIGNAL_USER_VISIBLE_CHANGED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-NAME-CHANGED:CAPS" title="BAMF_VIEW_SIGNAL_NAME_CHANGED">BAMF_VIEW_SIGNAL_NAME_CHANGED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-ICON-CHANGED:CAPS" title="BAMF_VIEW_SIGNAL_ICON_CHANGED">BAMF_VIEW_SIGNAL_ICON_CHANGED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-CHILD-ADDED:CAPS" title="BAMF_VIEW_SIGNAL_CHILD_ADDED">BAMF_VIEW_SIGNAL_CHILD_ADDED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-CHILD-REMOVED:CAPS" title="BAMF_VIEW_SIGNAL_CHILD_REMOVED">BAMF_VIEW_SIGNAL_CHILD_REMOVED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-CHILD-MOVED:CAPS" title="BAMF_VIEW_SIGNAL_CHILD_MOVED">BAMF_VIEW_SIGNAL_CHILD_MOVED</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfView.html#BAMF-VIEW-SIGNAL-CLOSED:CAPS" title="BAMF_VIEW_SIGNAL_CLOSED">BAMF_VIEW_SIGNAL_CLOSED</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="BamfView.html#BamfClickBehavior" title="enum BamfClickBehavior">BamfClickBehavior</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="BamfView.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+        <span class="lineart">╰──</span> BamfView
+            <span class="lineart">├──</span> <a class="link" href="BamfApplication.html" title="BamfApplication">BamfApplication</a>
+            <span class="lineart">├──</span> <a class="link" href="BamfTab.html" title="BamfTab">BamfTab</a>
+            <span class="lineart">╰──</span> <a class="link" href="BamfWindow.html" title="BamfWindow">BamfWindow</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="BamfView.description"></a><h2>Description</h2>
+<p><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> is the base class that all views need to derive from.</p>
+</div>
+<div class="refsect1">
+<a name="BamfView.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="bamf-view-get-children"></a><h3>bamf_view_get_children ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+bamf_view_get_children (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Note: Makes sever dbus calls the first time this is called on a view. Dbus messaging is reduced afterwards.</p>
+<div class="refsect3">
+<a name="bamf-view-get-children.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="bamf-view-get-children.returns"></a><h4>Returns</h4>
+<p>Returns a list of <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> which must be
+freed after usage. Elements of the list are owned by bamf and should not be unreffed. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> Bamf.View][<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-peek-children"></a><h3>bamf_view_peek_children ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+bamf_view_peek_children (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Note: Makes sever dbus calls the first time this is called on a view.
+Dbus messaging is reduced afterwards.</p>
+<div class="refsect3">
+<a name="bamf-view-peek-children.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="bamf-view-peek-children.returns"></a><h4>Returns</h4>
+<p>Returns a list of <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> which
+is owned by the <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> and should not freed or modified after usage. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> Bamf.View][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: 0.5.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-has-child"></a><h3>bamf_view_has_child ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_has_child (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>,
+                     <em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *child</code></em>);</pre>
+<div class="refsect3">
+<a name="bamf-view-has-child.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="bamf-view-has-child.returns"></a><h4>Returns</h4>
+<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> whether the <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> <em class="parameter"><code>view</code></em>
+has the specified <em class="parameter"><code>child</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-is-closed"></a><h3>bamf_view_is_closed ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_is_closed (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Determines if the view is closed or not.</p>
+<div class="refsect3">
+<a name="bamf-view-is-closed.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-is-active"></a><h3>bamf_view_is_active ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_is_active (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Determines if the view is currently active and focused by the user. Useful for an active window indicator.</p>
+<div class="refsect3">
+<a name="bamf-view-is-active.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-is-starting"></a><h3>bamf_view_is_starting ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_is_starting (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Determines if the view is currently starting. Useful for the startup animation.</p>
+<div class="refsect3">
+<a name="bamf-view-is-starting.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-is-running"></a><h3>bamf_view_is_running ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_is_running (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Determines if the view is currently running. Useful for a running window indicator.</p>
+<div class="refsect3">
+<a name="bamf-view-is-running.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-is-urgent"></a><h3>bamf_view_is_urgent ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_is_urgent (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Determines if the view is currently requiring attention. Useful for a running window indicator.</p>
+<div class="refsect3">
+<a name="bamf-view-is-urgent.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-is-user-visible"></a><h3>bamf_view_is_user_visible ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_is_user_visible (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<div class="refsect3">
+<a name="bamf-view-is-user-visible.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="bamf-view-is-user-visible.returns"></a><h4>Returns</h4>
+<p> a boolean useful for determining if a particular view is "user visible". User visible
+is a concept relating to whether or not a window should be shown in a launcher tasklist.</p>
+</div>
+<p class="since">Since: 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-get-name"></a><h3>bamf_view_get_name ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+bamf_view_get_name (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Gets the name of a view. This name is a short name best used to represent the view with text.</p>
+<div class="refsect3">
+<a name="bamf-view-get-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-get-icon"></a><h3>bamf_view_get_icon ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+bamf_view_get_icon (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>Gets the icon of a view. This icon is used to visually represent the view.</p>
+<div class="refsect3">
+<a name="bamf-view-get-icon.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-get-view-type"></a><h3>bamf_view_get_view_type ()</h3>
+<pre class="programlisting">const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+bamf_view_get_view_type (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<p>The view type of a window is a short string used to represent all views of the same class. These
+descriptions should not be used to do casting as they are not considered stable.</p>
+<p><span class="annotation">[<acronym title="This is the invoker for a virtual method."><span class="acronym">virtual</span></acronym> view_type]</span></p>
+<div class="refsect3">
+<a name="bamf-view-get-view-type.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-set-sticky"></a><h3>bamf_view_set_sticky ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+bamf_view_set_sticky (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>,
+                      <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> value</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-is-sticky"></a><h3>bamf_view_is_sticky ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_is_sticky (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-get-click-suggestion"></a><h3>bamf_view_get_click_suggestion ()</h3>
+<pre class="programlisting"><a class="link" href="BamfView.html#BamfClickBehavior" title="enum BamfClickBehavior"><span class="returnvalue">BamfClickBehavior</span></a>
+bamf_view_get_click_suggestion (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<div class="warning"><p><code class="literal">bamf_view_get_click_suggestion</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="bamf-view-user-visible"></a><h3>bamf_view_user_visible ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+bamf_view_user_visible (<em class="parameter"><code><a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *view</code></em>);</pre>
+<div class="warning"><p><code class="literal">bamf_view_user_visible</code> has been deprecated since version 0.4.0 and should not be used in newly-written code.</p></div>
+<p><span class="annotation">[<acronym title="Exposed in C code, not necessarily available in other languages."><span class="acronym">skip</span></acronym>]</span></p>
+<div class="refsect3">
+<a name="bamf-view-user-visible.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>view</p></td>
+<td class="parameter_description"><p>a <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="bamf-view-user-visible.returns"></a><h4>Returns</h4>
+<p> a boolean useful for determining if a particular view is "user visible". User visible
+is a concept relating to whether or not a window should be shown in a launcher tasklist.</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="BamfView.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-ACTIVE-CHANGED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_ACTIVE_CHANGED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_ACTIVE_CHANGED       "active-changed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-RUNNING-CHANGED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_RUNNING_CHANGED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_RUNNING_CHANGED      "running-changed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-STARTING-CHANGED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_STARTING_CHANGED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_STARTING_CHANGED     "starting-changed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-URGENT-CHANGED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_URGENT_CHANGED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_URGENT_CHANGED       "urgent-changed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-USER-VISIBLE-CHANGED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_USER_VISIBLE_CHANGED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_USER_VISIBLE_CHANGED "user-visible-changed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-NAME-CHANGED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_NAME_CHANGED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_NAME_CHANGED         "name-changed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-ICON-CHANGED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_ICON_CHANGED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_ICON_CHANGED         "icon-changed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-CHILD-ADDED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_CHILD_ADDED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_CHILD_ADDED          "child-added"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-CHILD-REMOVED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_CHILD_REMOVED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_CHILD_REMOVED        "child-removed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-CHILD-MOVED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_CHILD_MOVED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_CHILD_MOVED          "child-moved"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BAMF-VIEW-SIGNAL-CLOSED:CAPS"></a><h3>BAMF_VIEW_SIGNAL_CLOSED</h3>
+<pre class="programlisting">#define BAMF_VIEW_SIGNAL_CLOSED               "closed"
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfClickBehavior"></a><h3>enum BamfClickBehavior</h3>
+<div class="refsect3">
+<a name="BamfClickBehavior.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-NONE:CAPS"></a>BAMF_CLICK_BEHAVIOR_NONE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-OPEN:CAPS"></a>BAMF_CLICK_BEHAVIOR_OPEN</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-FOCUS:CAPS"></a>BAMF_CLICK_BEHAVIOR_FOCUS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-FOCUS-ALL:CAPS"></a>BAMF_CLICK_BEHAVIOR_FOCUS_ALL</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-MINIMIZE:CAPS"></a>BAMF_CLICK_BEHAVIOR_MINIMIZE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-RESTORE:CAPS"></a>BAMF_CLICK_BEHAVIOR_RESTORE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-RESTORE-ALL:CAPS"></a>BAMF_CLICK_BEHAVIOR_RESTORE_ALL</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="BAMF-CLICK-BEHAVIOR-PICKER:CAPS"></a>BAMF_CLICK_BEHAVIOR_PICKER</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="BamfView.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="BamfView--active"></a><h3>The <code class="literal">“active”</code> property</h3>
+<pre class="programlisting">  “active”                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>active.</p>
+<p>Flags: Read</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView--path"></a><h3>The <code class="literal">“path”</code> property</h3>
+<pre class="programlisting">  “path”                     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<p>path.</p>
+<p>Flags: Read</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView--running"></a><h3>The <code class="literal">“running”</code> property</h3>
+<pre class="programlisting">  “running”                  <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>running.</p>
+<p>Flags: Read</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView--starting"></a><h3>The <code class="literal">“starting”</code> property</h3>
+<pre class="programlisting">  “starting”                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>starting.</p>
+<p>Flags: Read</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView--urgent"></a><h3>The <code class="literal">“urgent”</code> property</h3>
+<pre class="programlisting">  “urgent”                   <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>urgent.</p>
+<p>Flags: Read</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView--user-visible"></a><h3>The <code class="literal">“user-visible”</code> property</h3>
+<pre class="programlisting">  “user-visible”             <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>user-visible.</p>
+<p>Flags: Read</p>
+<p>Default value: FALSE</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="BamfView.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="BamfView-active-changed"></a><h3>The <code class="literal">“active-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>  arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-child-added"></a><h3>The <code class="literal">“child-added”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-child-moved"></a><h3>The <code class="literal">“child-moved”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-child-removed"></a><h3>The <code class="literal">“child-removed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-closed"></a><h3>The <code class="literal">“closed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-icon-changed"></a><h3>The <code class="literal">“icon-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>    *arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-name-changed"></a><h3>The <code class="literal">“name-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>    *arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>    *arg2,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-running-changed"></a><h3>The <code class="literal">“running-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>  arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-starting-changed"></a><h3>The <code class="literal">“starting-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>  arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-urgent-changed"></a><h3>The <code class="literal">“urgent-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>  arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfView-user-visible-changed"></a><h3>The <code class="literal">“user-visible-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="BamfView.html" title="BamfView"><span class="type">BamfView</span></a> *bamfview,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>  arg1,
+               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
+<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-FIRST:CAPS">Run First</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.28</div>
+</body>
+</html>

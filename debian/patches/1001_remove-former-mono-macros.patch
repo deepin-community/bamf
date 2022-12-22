@@ -1,0 +1,16 @@
+Description: Remove remnants of long-removed mono stuff.
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,10 +32,6 @@
+ AC_PROG_INSTALL
+ AC_HEADER_STDC
+ 
+-SHAMROCK_EXPAND_LIBDIR
+-SHAMROCK_EXPAND_BINDIR
+-SHAMROCK_EXPAND_DATADIR
+-
+ #
+ # pkg-config
+ #
