@@ -20,14 +20,12 @@ Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 +. mate-autogen
 --- a/configure.ac
 +++ b/configure.ac
-@@ -14,8 +14,8 @@
+@@ -14,7 +14,7 @@
  
  AC_CONFIG_MACRO_DIR([m4])
  
 -GNOME_COMMON_INIT
--GNOME_COMPILE_WARNINGS(maximum)
 +MATE_COMMON_INIT
-+MATE_COMPILE_WARNINGS(maximum)
  
  AM_MAINTAINER_MODE
- AM_DISABLE_STATIC
+ AC_ISC_POSIX

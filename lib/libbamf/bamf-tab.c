@@ -29,8 +29,6 @@
 #include "bamf-tab.h"
 #include "bamf-view-private.h"
 
-#define BAMF_TAB_GET_PRIVATE(object) (G_TYPE_INSTANCE_GET_PRIVATE (object, BAMF_TYPE_TAB, BamfTabPrivate))
-
 enum
 {
   PROP_0,
@@ -40,14 +38,14 @@ enum
   PROP_IS_FOREGROUND_TAB
 };
 
-struct _BamfTabPrivate
+typedef struct _BamfTabPrivate
 {
   BamfDBusItemTab *proxy;
-};
+} BamfTabPrivate;
 
 static void bamf_tab_unset_proxy (BamfTab *self);
 
-G_DEFINE_TYPE (BamfTab, bamf_tab, BAMF_TYPE_VIEW);
+G_DEFINE_TYPE_WITH_PRIVATE (BamfTab, bamf_tab, BAMF_TYPE_VIEW);
 
 static void
 on_proxy_property_change (GObject *gobject, GParamSpec *pspec, gpointer user_data)
@@ -66,7 +64,7 @@ bamf_tab_set_path (BamfView *view, const gchar *path)
   GError *error = NULL;
 
   self = BAMF_TAB (view);
-  priv = self->priv;
+  priv = bamf_tab_get_instance_private (self);
 
   bamf_tab_unset_proxy (self);
   priv->proxy = _bamf_dbus_item_tab_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
@@ -88,9 +86,8 @@ bamf_tab_set_path (BamfView *view, const gchar *path)
 static void
 bamf_tab_get_property (GObject *object, guint property_id, GValue *value, GParamSpec *pspec)
 {
-  BamfTab *self;
-
-  self = BAMF_TAB (object);
+  BamfTab *self = BAMF_TAB (object);
+  BamfTabPrivate *priv = bamf_tab_get_instance_private (self);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (self)))
     {
@@ -101,16 +98,16 @@ bamf_tab_get_property (GObject *object, guint property_id, GValue *value, GParam
   switch (property_id)
     {
     case PROP_LOCATION:
-      g_value_set_string (value, _bamf_dbus_item_tab_get_location (self->priv->proxy));
+      g_value_set_string (value, _bamf_dbus_item_tab_get_location (priv->proxy));
       break;
     case PROP_DESKTOP_ID:
-      g_value_set_string (value, _bamf_dbus_item_tab_get_desktop_id (self->priv->proxy));
+      g_value_set_string (value, _bamf_dbus_item_tab_get_desktop_id (priv->proxy));
       break;
     case PROP_XID:
-      g_value_set_uint64 (value, _bamf_dbus_item_tab_get_xid (self->priv->proxy));
+      g_value_set_uint64 (value, _bamf_dbus_item_tab_get_xid (priv->proxy));
       break;
     case PROP_IS_FOREGROUND_TAB:
-      g_value_set_boolean (value, _bamf_dbus_item_tab_get_is_foreground_tab (self->priv->proxy));
+      g_value_set_boolean (value, _bamf_dbus_item_tab_get_is_foreground_tab (priv->proxy));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -120,13 +117,15 @@ bamf_tab_get_property (GObject *object, guint property_id, GValue *value, GParam
 static void
 bamf_tab_unset_proxy (BamfTab *self)
 {
-  if (!G_IS_DBUS_PROXY (self->priv->proxy))
+  BamfTabPrivate *priv = bamf_tab_get_instance_private (self);
+
+  if (!G_IS_DBUS_PROXY (priv->proxy))
     return;
 
-  g_signal_handlers_disconnect_by_data (self->priv->proxy, self);
+  g_signal_handlers_disconnect_by_data (priv->proxy, self);
 
-  g_object_unref (self->priv->proxy);
-  self->priv->proxy = NULL;
+  g_object_unref (priv->proxy);
+  priv->proxy = NULL;
 }
 
 static void
@@ -158,7 +157,7 @@ bamf_tab_class_init (BamfTabClass *klass)
                               NULL, G_PARAM_READABLE);
   g_object_class_install_property (obj_class, PROP_LOCATION, pspec);
 
-  pspec = g_param_spec_string("desktop-id", "Desktop Name", "The Desktop ID assosciated with the application hosted in the remote Tab",
+  pspec = g_param_spec_string("desktop-id", "Desktop Name", "The Desktop ID associated with the application hosted in the remote Tab",
                               NULL, G_PARAM_READABLE);
   g_object_class_install_property (obj_class, PROP_DESKTOP_ID, pspec);
 
@@ -169,14 +168,11 @@ bamf_tab_class_init (BamfTabClass *klass)
   pspec = g_param_spec_boolean("is-foreground-tab", "Foreground tab", "Whether the tab is the foreground tab in it's toplevel container",
                                FALSE, G_PARAM_READABLE);
   g_object_class_install_property (obj_class, PROP_IS_FOREGROUND_TAB, pspec);
-
-  g_type_class_add_private (obj_class, sizeof(BamfTabPrivate));
 }
 
 static void
 bamf_tab_init (BamfTab *self)
 {
-  self->priv = BAMF_TAB_GET_PRIVATE (self);
 }
 
 BamfTab *
@@ -202,13 +198,15 @@ gboolean
 bamf_tab_raise (BamfTab *self)
 {
   GError *error = NULL;
+  BamfTabPrivate *priv;
 
   g_return_val_if_fail (BAMF_IS_TAB (self), FALSE);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (self)))
     return FALSE;
 
-  if (!_bamf_dbus_item_tab_call_raise_sync (self->priv->proxy, CANCELLABLE (self), &error))
+  priv = bamf_tab_get_instance_private (self);
+  if (!_bamf_dbus_item_tab_call_raise_sync (priv->proxy, CANCELLABLE (self), &error))
     {
       g_warning ("Failed to invoke Raise method: %s", error ? error->message : "");
       g_error_free (error);
@@ -230,6 +228,7 @@ bamf_tab_raise (BamfTab *self)
 gboolean
 bamf_tab_close (BamfTab *self)
 {
+  BamfTabPrivate *priv;
   GError *error;
 
   g_return_val_if_fail (BAMF_IS_TAB (self), FALSE);
@@ -238,8 +237,9 @@ bamf_tab_close (BamfTab *self)
     return FALSE;
 
   error = NULL;
+  priv = bamf_tab_get_instance_private (self);
 
-  if (!_bamf_dbus_item_tab_call_close_sync (self->priv->proxy, CANCELLABLE (self), &error))
+  if (!_bamf_dbus_item_tab_call_close_sync (priv->proxy, CANCELLABLE (self), &error))
     {
       g_warning ("Failed to invoke Close method: %s", error->message);
       g_error_free (error);
@@ -261,14 +261,16 @@ static void
 on_preview_ready (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
   BamfTab *self;
+  BamfTabPrivate *priv;
   BamfTabPreviewRequestData *data;
   gchar *preview_data = NULL;
   GError *error = NULL;
 
   data = user_data;
   self = data->self;
+  priv = bamf_tab_get_instance_private (self);
 
-  if (_bamf_dbus_item_tab_call_request_preview_finish (self->priv->proxy, &preview_data, res, &error))
+  if (_bamf_dbus_item_tab_call_request_preview_finish (priv->proxy, &preview_data, res, &error))
     {
       data->callback (self, preview_data, data->user_data);
       g_free (preview_data);
@@ -294,6 +296,7 @@ void
 bamf_tab_request_preview (BamfTab *self, BamfTabPreviewReadyCallback callback, gpointer user_data)
 {
   BamfTabPreviewRequestData *data;
+  BamfTabPrivate *priv;
 
   g_return_if_fail (BAMF_IS_TAB (self));
   g_return_if_fail (callback != NULL);
@@ -303,19 +306,23 @@ bamf_tab_request_preview (BamfTab *self, BamfTabPreviewReadyCallback callback, g
   data->callback = callback;
   data->user_data = user_data;
 
-  _bamf_dbus_item_tab_call_request_preview (self->priv->proxy, NULL,
+  priv = bamf_tab_get_instance_private (self);
+  _bamf_dbus_item_tab_call_request_preview (priv->proxy, NULL,
                                             on_preview_ready, data);
 }
 
 const gchar *
 bamf_tab_get_location (BamfTab *self)
 {
+  BamfTabPrivate *priv;
+
   g_return_val_if_fail (BAMF_IS_TAB (self), NULL);
 
   if (BAMF_TAB_GET_CLASS (self)->get_location)
     return BAMF_TAB_GET_CLASS (self)->get_location (self);
 
-  return _bamf_dbus_item_tab_get_location (self->priv->proxy);
+  priv = bamf_tab_get_instance_private (self);
+  return _bamf_dbus_item_tab_get_location (priv->proxy);
 }
 
 /**
@@ -329,12 +336,15 @@ bamf_tab_get_location (BamfTab *self)
 const gchar *
 bamf_tab_get_desktop_name (BamfTab *self)
 {
+  BamfTabPrivate *priv;
+
   g_return_val_if_fail (BAMF_IS_TAB (self), NULL);
 
   if (BAMF_TAB_GET_CLASS (self)->get_desktop_name)
     return BAMF_TAB_GET_CLASS (self)->get_desktop_name (self);
 
-  return _bamf_dbus_item_tab_get_desktop_id (self->priv->proxy);
+  priv = bamf_tab_get_instance_private (self);
+  return _bamf_dbus_item_tab_get_desktop_id (priv->proxy);
 }
 
 /**
@@ -348,12 +358,15 @@ bamf_tab_get_desktop_name (BamfTab *self)
 guint64
 bamf_tab_get_xid (BamfTab *self)
 {
+  BamfTabPrivate *priv;
+
   g_return_val_if_fail (BAMF_IS_TAB (self), 0);
 
   if (BAMF_TAB_GET_CLASS (self)->get_xid)
     return BAMF_TAB_GET_CLASS (self)->get_xid (self);
 
-  return _bamf_dbus_item_tab_get_xid (self->priv->proxy);
+  priv = bamf_tab_get_instance_private (self);
+  return _bamf_dbus_item_tab_get_xid (priv->proxy);
 }
 
 /**
@@ -365,10 +378,13 @@ bamf_tab_get_xid (BamfTab *self)
 gboolean
 bamf_tab_get_is_foreground_tab (BamfTab *self)
 {
+  BamfTabPrivate *priv;
+
   g_return_val_if_fail (BAMF_IS_TAB (self), FALSE);
 
   if (BAMF_TAB_GET_CLASS (self)->get_is_foreground_tab)
     return BAMF_TAB_GET_CLASS (self)->get_is_foreground_tab (self);
 
-  return _bamf_dbus_item_tab_get_is_foreground_tab (self->priv->proxy);
+  priv = bamf_tab_get_instance_private (self);
+  return _bamf_dbus_item_tab_get_is_foreground_tab (priv->proxy);
 }

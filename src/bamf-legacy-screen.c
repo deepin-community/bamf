@@ -26,10 +26,6 @@
 #include <libsn/sn.h>
 #undef SN_API_NOT_YET_FROZEN
 
-G_DEFINE_TYPE (BamfLegacyScreen, bamf_legacy_screen, G_TYPE_OBJECT);
-#define BAMF_LEGACY_SCREEN_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE(obj, \
-BAMF_TYPE_LEGACY_SCREEN, BamfLegacyScreenPrivate))
-
 static BamfLegacyScreen *static_screen = NULL;
 
 enum
@@ -60,6 +56,8 @@ struct _BamfLegacyScreenPrivate
   GFile *file;
   GDataInputStream *stream;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (BamfLegacyScreen, bamf_legacy_screen, G_TYPE_OBJECT);
 
 static void
 handle_window_closed (BamfLegacyWindow *window, BamfLegacyScreen *self)
@@ -459,7 +457,7 @@ bamf_legacy_screen_finalize (GObject *object)
 static void
 bamf_legacy_screen_init (BamfLegacyScreen * self)
 {
-  self->priv = BAMF_LEGACY_SCREEN_GET_PRIVATE (self);
+  self->priv = bamf_legacy_screen_get_instance_private (self);
 }
 
 static void
@@ -468,8 +466,6 @@ bamf_legacy_screen_class_init (BamfLegacyScreenClass * klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = bamf_legacy_screen_finalize;
-
-  g_type_class_add_private (klass, sizeof (BamfLegacyScreenPrivate));
 
   legacy_screen_signals [WINDOW_OPENING] =
     g_signal_new (BAMF_LEGACY_SCREEN_SIGNAL_WINDOW_OPENING,

@@ -21,10 +21,6 @@
 #include "bamf-matcher.h"
 #include "bamf-control.h"
 
-G_DEFINE_TYPE (BamfDaemon, bamf_daemon, G_TYPE_OBJECT);
-#define BAMF_DAEMON_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE(obj, \
-                                      BAMF_TYPE_DAEMON, BamfDaemonPrivate))
-
 static BamfDaemon *instance = NULL;
 
 struct _BamfDaemonPrivate
@@ -33,6 +29,8 @@ struct _BamfDaemonPrivate
   BamfControl *control;
   GMainLoop *loop;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (BamfDaemon, bamf_daemon, G_TYPE_OBJECT);
 
 gboolean
 bamf_daemon_is_running (BamfDaemon *self)
@@ -165,7 +163,7 @@ static void
 bamf_daemon_init (BamfDaemon *self)
 {
   BamfDaemonPrivate *priv;
-  priv = self->priv = BAMF_DAEMON_GET_PRIVATE (self);
+  priv = self->priv = bamf_daemon_get_instance_private (self);
 
   priv->loop = g_main_loop_new (NULL, FALSE);
 }
@@ -177,8 +175,6 @@ bamf_daemon_class_init (BamfDaemonClass * klass)
 
   object_class->dispose  = bamf_daemon_dispose;
   object_class->finalize = bamf_daemon_finalize;
-
-  g_type_class_add_private (klass, sizeof (BamfDaemonPrivate));
 }
 
 BamfDaemon *

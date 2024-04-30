@@ -48,10 +48,13 @@
     <keyword type="function" name="bamf_window_get_utf8_prop ()" link="BamfWindow.html#bamf-window-get-utf8-prop"/>
     <keyword type="function" name="bamf_window_maximized ()" link="BamfWindow.html#bamf-window-maximized"/>
     <keyword type="function" name="bamf_window_last_active ()" link="BamfWindow.html#bamf-window-last-active"/>
+    <keyword type="macro" name="BAMF_TYPE_WINDOW" link="BamfWindow.html#BAMF-TYPE-WINDOW:CAPS"/>
     <keyword type="macro" name="BAMF_WINDOW_SIGNAL_MONITOR_CHANGED" link="BamfWindow.html#BAMF-WINDOW-SIGNAL-MONITOR-CHANGED:CAPS"/>
     <keyword type="macro" name="BAMF_WINDOW_SIGNAL_MAXIMIZED_CHANGED" link="BamfWindow.html#BAMF-WINDOW-SIGNAL-MAXIMIZED-CHANGED:CAPS"/>
     <keyword type="enum" name="enum BamfWindowType" link="BamfWindow.html#BamfWindowType"/>
     <keyword type="enum" name="enum BamfWindowMaximizationType" link="BamfWindow.html#BamfWindowMaximizationType"/>
+    <keyword type="struct" name="struct BamfWindowClass" link="BamfWindow.html#BamfWindowClass"/>
+    <keyword type="struct" name="BamfWindow" link="BamfWindow.html#BamfWindow-struct"/>
     <keyword type="signal" name="The “maximized-changed” signal" link="BamfWindow.html#BamfWindow-maximized-changed"/>
     <keyword type="signal" name="The “monitor-changed” signal" link="BamfWindow.html#BamfWindow-monitor-changed"/>
     <keyword type="enum" name="enum BamfFactoryViewType" link="BamfFactory.html#BamfFactoryViewType"/>
@@ -60,7 +63,6 @@
     <keyword type="function" name="bamf_control_create_local_desktop_file ()" link="BamfControl.html#bamf-control-create-local-desktop-file"/>
     <keyword type="function" name="bamf_control_register_application_for_pid ()" link="BamfControl.html#bamf-control-register-application-for-pid"/>
     <keyword type="function" name="bamf_control_set_approver_behavior ()" link="BamfControl.html#bamf-control-set-approver-behavior"/>
-    <keyword type="macro" name="BAMF_TAB_CONST()" link="BamfTab.html#BAMF-TAB-CONST:CAPS"/>
     <keyword type="function" name="BamfTabPreviewReadyCallback ()" link="BamfTab.html#BamfTabPreviewReadyCallback"/>
     <keyword type="function" name="bamf_tab_raise ()" link="BamfTab.html#bamf-tab-raise"/>
     <keyword type="function" name="bamf_tab_close ()" link="BamfTab.html#bamf-tab-close"/>
@@ -69,6 +71,9 @@
     <keyword type="function" name="bamf_tab_get_location ()" link="BamfTab.html#bamf-tab-get-location"/>
     <keyword type="function" name="bamf_tab_get_xid ()" link="BamfTab.html#bamf-tab-get-xid"/>
     <keyword type="function" name="bamf_tab_get_is_foreground_tab ()" link="BamfTab.html#bamf-tab-get-is-foreground-tab"/>
+    <keyword type="macro" name="BAMF_TYPE_TAB" link="BamfTab.html#BAMF-TYPE-TAB:CAPS"/>
+    <keyword type="struct" name="struct BamfTabClass" link="BamfTab.html#BamfTabClass"/>
+    <keyword type="struct" name="BamfTab" link="BamfTab.html#BamfTab-struct"/>
     <keyword type="property" name="The “desktop-id” property" link="BamfTab.html#BamfTab--desktop-id"/>
     <keyword type="property" name="The “is-foreground-tab” property" link="BamfTab.html#BamfTab--is-foreground-tab"/>
     <keyword type="property" name="The “location” property" link="BamfTab.html#BamfTab--location"/>
@@ -89,6 +94,7 @@
     <keyword type="function" name="bamf_view_is_sticky ()" link="BamfView.html#bamf-view-is-sticky"/>
     <keyword type="function" name="bamf_view_get_click_suggestion ()" link="BamfView.html#bamf-view-get-click-suggestion" deprecated=""/>
     <keyword type="function" name="bamf_view_user_visible ()" link="BamfView.html#bamf-view-user-visible" deprecated="0.4.0"/>
+    <keyword type="macro" name="BAMF_TYPE_VIEW" link="BamfView.html#BAMF-TYPE-VIEW:CAPS"/>
     <keyword type="macro" name="BAMF_VIEW_SIGNAL_ACTIVE_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-ACTIVE-CHANGED:CAPS"/>
     <keyword type="macro" name="BAMF_VIEW_SIGNAL_RUNNING_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-RUNNING-CHANGED:CAPS"/>
     <keyword type="macro" name="BAMF_VIEW_SIGNAL_STARTING_CHANGED" link="BamfView.html#BAMF-VIEW-SIGNAL-STARTING-CHANGED:CAPS"/>
@@ -101,6 +107,8 @@
     <keyword type="macro" name="BAMF_VIEW_SIGNAL_CHILD_MOVED" link="BamfView.html#BAMF-VIEW-SIGNAL-CHILD-MOVED:CAPS"/>
     <keyword type="macro" name="BAMF_VIEW_SIGNAL_CLOSED" link="BamfView.html#BAMF-VIEW-SIGNAL-CLOSED:CAPS"/>
     <keyword type="enum" name="enum BamfClickBehavior" link="BamfView.html#BamfClickBehavior"/>
+    <keyword type="struct" name="struct BamfViewClass" link="BamfView.html#BamfViewClass"/>
+    <keyword type="struct" name="BamfView" link="BamfView.html#BamfView-struct"/>
     <keyword type="property" name="The “active” property" link="BamfView.html#BamfView--active"/>
     <keyword type="property" name="The “path” property" link="BamfView.html#BamfView--path"/>
     <keyword type="property" name="The “running” property" link="BamfView.html#BamfView--running"/>
@@ -127,9 +135,12 @@
     <keyword type="function" name="bamf_application_get_show_menu_stubs ()" link="BamfApplication.html#bamf-application-get-show-menu-stubs"/>
     <keyword type="function" name="bamf_application_get_window_for_xid ()" link="BamfApplication.html#bamf-application-get-window-for-xid" since="0.5.2"/>
     <keyword type="function" name="bamf_application_get_application_menu ()" link="BamfApplication.html#bamf-application-get-application-menu" deprecated="0.5.0"/>
+    <keyword type="macro" name="BAMF_TYPE_APPLICATION" link="BamfApplication.html#BAMF-TYPE-APPLICATION:CAPS"/>
     <keyword type="macro" name="BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED" link="BamfApplication.html#BAMF-APPLICATION-SIGNAL-DESKTOP-FILE-UPDATED:CAPS"/>
     <keyword type="macro" name="BAMF_APPLICATION_SIGNAL_WINDOW_ADDED" link="BamfApplication.html#BAMF-APPLICATION-SIGNAL-WINDOW-ADDED:CAPS"/>
     <keyword type="macro" name="BAMF_APPLICATION_SIGNAL_WINDOW_REMOVED" link="BamfApplication.html#BAMF-APPLICATION-SIGNAL-WINDOW-REMOVED:CAPS"/>
+    <keyword type="struct" name="struct BamfApplicationClass" link="BamfApplication.html#BamfApplicationClass"/>
+    <keyword type="struct" name="BamfApplication" link="BamfApplication.html#BamfApplication-struct"/>
     <keyword type="signal" name="The “desktop-file-updated” signal" link="BamfApplication.html#BamfApplication-desktop-file-updated"/>
     <keyword type="signal" name="The “window-added” signal" link="BamfApplication.html#BamfApplication-window-added"/>
     <keyword type="signal" name="The “window-removed” signal" link="BamfApplication.html#BamfApplication-window-removed"/>

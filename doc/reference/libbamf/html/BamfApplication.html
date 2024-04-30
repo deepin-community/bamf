@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>BamfApplication: libbamf Reference Manual</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
 <link rel="home" href="index.html" title="libbamf Reference Manual">
 <link rel="up" href="ch01.html" title="Classes">
 <link rel="prev" href="BamfView.html" title="BamfView">
 <link rel="next" href="object-tree.html" title="Object Hierarchy">
-<meta name="generator" content="GTK-Doc V1.28 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.33.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -37,19 +37,19 @@
 <a name="BamfApplication.functions"></a><h2>Functions</h2>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
-<col width="150px" class="functions_return">
-<col class="functions_name">
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
 </colgroup>
 <tbody>
 <tr>
-<td class="function_type">const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<td class="function_type">const <span class="returnvalue">gchar</span> *
 </td>
 <td class="function_name">
 <a class="link" href="BamfApplication.html#bamf-application-get-application-type" title="bamf_application_get_application_type ()">bamf_application_get_application_type</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 <tr>
-<td class="function_type">const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<td class="function_type">const <span class="returnvalue">gchar</span> *
 </td>
 <td class="function_name">
 <a class="link" href="BamfApplication.html#bamf-application-get-desktop-file" title="bamf_application_get_desktop_file ()">bamf_application_get_desktop_file</a> <span class="c_punctuation">()</span>
@@ -57,7 +57,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> **
+<span class="returnvalue">gchar</span> **
 </td>
 <td class="function_name">
 <a class="link" href="BamfApplication.html#bamf-application-get-supported-mime-types" title="bamf_application_get_supported_mime_types ()">bamf_application_get_supported_mime_types</a> <span class="c_punctuation">()</span>
@@ -65,7 +65,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+<span class="returnvalue">GList</span> *
 </td>
 <td class="function_name">
 <a class="link" href="BamfApplication.html#bamf-application-get-windows" title="bamf_application_get_windows ()">bamf_application_get_windows</a> <span class="c_punctuation">()</span>
@@ -73,7 +73,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Arrays.html#GArray"><span class="returnvalue">GArray</span></a> *
+<span class="returnvalue">GArray</span> *
 </td>
 <td class="function_name">
 <a class="link" href="BamfApplication.html#bamf-application-get-xids" title="bamf_application_get_xids ()">bamf_application_get_xids</a> <span class="c_punctuation">()</span>
@@ -89,7 +89,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<span class="returnvalue">gboolean</span>
 </td>
 <td class="function_name">
 <a class="link" href="BamfApplication.html#bamf-application-get-show-menu-stubs" title="bamf_application_get_show_menu_stubs ()">bamf_application_get_show_menu_stubs</a> <span class="c_punctuation">()</span>
@@ -105,7 +105,7 @@
 </tr>
 <tr>
 <td class="function_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<span class="returnvalue">gboolean</span>
 </td>
 <td class="function_name">
 <a class="link" href="BamfApplication.html#bamf-application-get-application-menu" title="bamf_application_get_application_menu ()">bamf_application_get_application_menu</a> <span class="c_punctuation">()</span>
@@ -118,9 +118,9 @@
 <a name="BamfApplication.signals"></a><h2>Signals</h2>
 <div class="informaltable"><table class="informaltable" border="0">
 <colgroup>
-<col width="150px" class="signals_return">
-<col width="300px" class="signals_name">
-<col width="200px" class="signals_flags">
+<col width="150px" class="signal_proto_type">
+<col width="300px" class="signal_proto_name">
+<col width="200px" class="signal_proto_flags">
 </colgroup>
 <tbody>
 <tr>
@@ -145,10 +145,14 @@
 <a name="BamfApplication.other"></a><h2>Types and Values</h2>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
-<col width="150px" class="name">
-<col class="description">
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
 </colgroup>
 <tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="BamfApplication.html#BAMF-TYPE-APPLICATION:CAPS" title="BAMF_TYPE_APPLICATION">BAMF_TYPE_APPLICATION</a></td>
+</tr>
 <tr>
 <td class="define_keyword">#define</td>
 <td class="function_name"><a class="link" href="BamfApplication.html#BAMF-APPLICATION-SIGNAL-DESKTOP-FILE-UPDATED:CAPS" title="BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED">BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED</a></td>
@@ -161,13 +165,21 @@
 <td class="define_keyword">#define</td>
 <td class="function_name"><a class="link" href="BamfApplication.html#BAMF-APPLICATION-SIGNAL-WINDOW-REMOVED:CAPS" title="BAMF_APPLICATION_SIGNAL_WINDOW_REMOVED">BAMF_APPLICATION_SIGNAL_WINDOW_REMOVED</a></td>
 </tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="BamfApplication.html#BamfApplicationClass" title="struct BamfApplicationClass">BamfApplicationClass</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="BamfApplication.html#BamfApplication-struct" title="BamfApplication">BamfApplication</a></td>
+</tr>
 </tbody>
 </table></div>
 </div>
 <div class="refsect1">
 <a name="BamfApplication.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
-    <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GInitiallyUnowned
         <span class="lineart">╰──</span> <a class="link" href="BamfView.html" title="BamfView">BamfView</a>
             <span class="lineart">╰──</span> BamfApplication
 </pre>
@@ -180,13 +192,13 @@
 <a name="BamfApplication.functions_details"></a><h2>Functions</h2>
 <div class="refsect2">
 <a name="bamf-application-get-application-type"></a><h3>bamf_application_get_application_type ()</h3>
-<pre class="programlisting">const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *
 bamf_application_get_application_type (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>);</pre>
 </div>
 <hr>
 <div class="refsect2">
 <a name="bamf-application-get-desktop-file"></a><h3>bamf_application_get_desktop_file ()</h3>
-<pre class="programlisting">const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *
 bamf_application_get_desktop_file (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>);</pre>
 <p>Used to fetch the path to the .desktop file associated with the passed application. If
 none exists, the result is NULL.</p>
@@ -213,7 +225,7 @@ none exists, the result is NULL.</p>
 <hr>
 <div class="refsect2">
 <a name="bamf-application-get-supported-mime-types"></a><h3>bamf_application_get_supported_mime_types ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> **
+<pre class="programlisting"><span class="returnvalue">gchar</span> **
 bamf_application_get_supported_mime_types
                                (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>);</pre>
 <div class="refsect3">
@@ -234,13 +246,13 @@ bamf_application_get_supported_mime_types
 <div class="refsect3">
 <a name="bamf-application-get-supported-mime-types.returns"></a><h4>Returns</h4>
 <p>A string array containing the supported mime-types. </p>
-<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1]</span></p>
+<p><span class="annotation">[<acronym title="The caller owns the data, and is responsible for free it."><span class="acronym">transfer full</span></acronym>][<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1]</span></p>
 </div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="bamf-application-get-windows"></a><h3>bamf_application_get_windows ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+<pre class="programlisting"><span class="returnvalue">GList</span> *
 bamf_application_get_windows (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>);</pre>
 <p>Used to fetch all <a class="link" href="BamfWindow.html" title="BamfWindow"><span class="type">BamfWindow</span></a>'s associated with the passed <a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a>.</p>
 <div class="refsect3">
@@ -261,13 +273,13 @@ bamf_application_get_windows (<em class="parameter"><code><a class="link" href="
 <div class="refsect3">
 <a name="bamf-application-get-windows.returns"></a><h4>Returns</h4>
 <p>A list of <a class="link" href="BamfWindow.html" title="BamfWindow"><span class="type">BamfWindow</span></a>'s. </p>
-<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> Bamf.Window][<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>]</span></p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> Bamf.Window][<acronym title="The caller owns the data container, but not the data inside it."><span class="acronym">transfer container</span></acronym>]</span></p>
 </div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="bamf-application-get-xids"></a><h3>bamf_application_get_xids ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Arrays.html#GArray"><span class="returnvalue">GArray</span></a> *
+<pre class="programlisting"><span class="returnvalue">GArray</span> *
 bamf_application_get_xids (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>);</pre>
 <p>Used to fetch all <a class="link" href="BamfWindow.html" title="BamfWindow"><span class="type">BamfWindow</span></a>'s xids associated with the passed <a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a>.</p>
 <div class="refsect3">
@@ -288,7 +300,7 @@ bamf_application_get_xids (<em class="parameter"><code><a class="link" href="Bam
 <div class="refsect3">
 <a name="bamf-application-get-xids.returns"></a><h4>Returns</h4>
 <p>An array of xids. </p>
-<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> guint32][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> guint32][<acronym title="The caller owns the data, and is responsible for free it."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
 </div>
 <hr>
@@ -314,13 +326,13 @@ bamf_application_get_focusable_child (<em class="parameter"><code><a class="link
 <div class="refsect3">
 <a name="bamf-application-get-focusable-child.returns"></a><h4>Returns</h4>
 <p>The focusable child for this application. </p>
-<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+<p><span class="annotation">[<acronym title="The data is owned by the callee, which is responsible of freeing it."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="bamf-application-get-show-menu-stubs"></a><h3>bamf_application_get_show_menu_stubs ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
 bamf_application_get_show_menu_stubs (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>);</pre>
 <p>Used to discover whether the application wants menu stubs shown.</p>
 <div class="refsect3">
@@ -348,7 +360,7 @@ bamf_application_get_show_menu_stubs (<em class="parameter"><code><a class="link
 <a name="bamf-application-get-window-for-xid"></a><h3>bamf_application_get_window_for_xid ()</h3>
 <pre class="programlisting"><a class="link" href="BamfWindow.html" title="BamfWindow"><span class="returnvalue">BamfWindow</span></a> *
 bamf_application_get_window_for_xid (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>,
-                                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> xid</code></em>);</pre>
+                                     <em class="parameter"><code><span class="type">guint32</span> xid</code></em>);</pre>
 <p>Used to fetch the application contains a Window with given <em class="parameter"><code>xid</code></em>
 .</p>
 <div class="refsect3">
@@ -376,18 +388,18 @@ bamf_application_get_window_for_xid (<em class="parameter"><code><a class="link"
 <div class="refsect3">
 <a name="bamf-application-get-window-for-xid.returns"></a><h4>Returns</h4>
 <p>a <a class="link" href="BamfWindow.html" title="BamfWindow"><span class="type">BamfWindow</span></a> for the passed <em class="parameter"><code>xid</code></em>
-or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. </p>
-<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+or <code class="literal">NULL</code> if not found. </p>
+<p><span class="annotation">[<acronym title="The data is owned by the callee, which is responsible of freeing it."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
 <p class="since">Since: 0.5.2</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="bamf-application-get-application-menu"></a><h3>bamf_application_get_application_menu ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
 bamf_application_get_application_menu (<em class="parameter"><code><a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *application</code></em>,
-                                       <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **name</code></em>,
-                                       <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> **object_path</code></em>);</pre>
+                                       <em class="parameter"><code><span class="type">gchar</span> **name</code></em>,
+                                       <em class="parameter"><code><span class="type">gchar</span> **object_path</code></em>);</pre>
 <div class="warning"><p><code class="literal">bamf_application_get_application_menu</code> has been deprecated since version 0.5.0 and should not be used in newly-written code.</p></div>
 <p>Used to fetch the bus name and the object path of the remote application menu.</p>
 <div class="refsect3">
@@ -419,12 +431,18 @@ bamf_application_get_application_menu (<em class="parameter"><code><a class="lin
 </div>
 <div class="refsect3">
 <a name="bamf-application-get-application-menu.returns"></a><h4>Returns</h4>
-<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if found, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+<p> <code class="literal">TRUE</code> if found, <code class="literal">FALSE</code> otherwise.</p>
 </div>
 </div>
 </div>
 <div class="refsect1">
 <a name="BamfApplication.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="BAMF-TYPE-APPLICATION:CAPS"></a><h3>BAMF_TYPE_APPLICATION</h3>
+<pre class="programlisting">#define BAMF_TYPE_APPLICATION (bamf_application_get_type ())
+</pre>
+</div>
+<hr>
 <div class="refsect2">
 <a name="BAMF-APPLICATION-SIGNAL-DESKTOP-FILE-UPDATED:CAPS"></a><h3>BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED</h3>
 <pre class="programlisting">#define BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED "desktop-file-updated"
@@ -442,6 +460,19 @@ bamf_application_get_application_menu (<em class="parameter"><code><a class="lin
 <pre class="programlisting">#define BAMF_APPLICATION_SIGNAL_WINDOW_REMOVED       "window-removed"
 </pre>
 </div>
+<hr>
+<div class="refsect2">
+<a name="BamfApplicationClass"></a><h3>struct BamfApplicationClass</h3>
+<pre class="programlisting">struct BamfApplicationClass {
+  BamfViewClass parent_class;
+};
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="BamfApplication-struct"></a><h3>BamfApplication</h3>
+<pre class="programlisting">typedef struct _BamfApplication BamfApplication;</pre>
+</div>
 </div>
 <div class="refsect1">
 <a name="BamfApplication.signal-details"></a><h2>Signal Details</h2>
@@ -449,8 +480,8 @@ bamf_application_get_application_menu (<em class="parameter"><code><a class="lin
 <a name="BamfApplication-desktop-file-updated"></a><h3>The <code class="literal">“desktop-file-updated”</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>
 user_function (<a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *bamfapplication,
-               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>           *arg1,
-               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>         user_data)</pre>
+               <span class="type">char</span>            *arg1,
+               <span class="type">gpointer</span>         user_data)</pre>
 </div>
 <hr>
 <div class="refsect2">
@@ -458,7 +489,7 @@ user_function (<a class="link" href="BamfApplication.html" title="BamfApplicatio
 <pre class="programlisting"><span class="returnvalue">void</span>
 user_function (<a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *bamfapplication,
                <a class="link" href="BamfWindow.html" title="BamfWindow"><span class="type">BamfWindow</span></a>      *arg1,
-               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>         user_data)</pre>
+               <span class="type">gpointer</span>         user_data)</pre>
 </div>
 <hr>
 <div class="refsect2">
@@ -466,11 +497,11 @@ user_function (<a class="link" href="BamfApplication.html" title="BamfApplicatio
 <pre class="programlisting"><span class="returnvalue">void</span>
 user_function (<a class="link" href="BamfApplication.html" title="BamfApplication"><span class="type">BamfApplication</span></a> *bamfapplication,
                <a class="link" href="BamfWindow.html" title="BamfWindow"><span class="type">BamfWindow</span></a>      *arg1,
-               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>         user_data)</pre>
+               <span class="type">gpointer</span>         user_data)</pre>
 </div>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.28</div>
+<hr>Generated by GTK-Doc V1.33.1</div>
 </body>
 </html>
