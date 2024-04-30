@@ -1,8 +1,20 @@
-bamf (0.5.4-deepin1) unstable; urgency=medium
+bamf (0.5.6+repack-1) unstable; urgency=medium
 
-  * Rebuild
+  * New upstream release.
+  * debian/patches:
+    + Drop patches 1001, 1002, 1003 and 1004. Not required anymore.
+  * debian/upstream/signing-key.asc:
+    + Add file.
+  * debian/libbamf-doc.doc-base:
+    + Provide API docs in /usr/share/doc/<pkg>/ (and symlink from
+      gtk-doc/libbamf/).
+  * debian/copyright:
+    + Update copyright attributions.
+    + Update auto-generated copyright.in file.
+  * debian/rules:
+    + Drop dh_strip override. The dbgsym migration is over.
 
- -- Deepin Packages Builder <packages@deepin.org>  Fri, 11 Nov 2022 17:55:53 +0800
+ -- Mike Gabriel <sunweaver@debian.org>  Sat, 26 Feb 2022 00:21:02 +0100
 
 bamf (0.5.4-2) unstable; urgency=medium
 

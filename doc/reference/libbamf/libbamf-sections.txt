@@ -1,9 +1,11 @@
 <SECTION>
 <FILE>bamf-application</FILE>
 <TITLE>BamfApplication</TITLE>
+BAMF_TYPE_APPLICATION
 BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED
 BAMF_APPLICATION_SIGNAL_WINDOW_ADDED
 BAMF_APPLICATION_SIGNAL_WINDOW_REMOVED
+BamfApplicationClass
 bamf_application_get_application_type
 bamf_application_get_desktop_file
 bamf_application_get_supported_mime_types
@@ -13,16 +15,7 @@ bamf_application_get_focusable_child
 bamf_application_get_show_menu_stubs
 bamf_application_get_window_for_xid
 bamf_application_get_application_menu
-<SUBSECTION Standard>
-BAMF_APPLICATION
-BAMF_APPLICATION_CLASS
-BAMF_APPLICATION_GET_CLASS
-BAMF_IS_APPLICATION
-BAMF_TYPE_APPLICATION
 BamfApplication
-BamfApplicationClass
-BamfApplicationPrivate
-bamf_application_get_type
 </SECTION>
 
 <SECTION>
@@ -43,6 +36,7 @@ BAMF_CONTROL
 BAMF_CONTROL_CLASS
 BAMF_CONTROL_GET_CLASS
 BAMF_IS_CONTROL
+BAMF_IS_CONTROL_CLASS
 BAMF_TYPE_CONTROL
 BamfControl
 BamfControlClass
@@ -59,6 +53,7 @@ BAMF_FACTORY
 BAMF_FACTORY_CLASS
 BAMF_FACTORY_GET_CLASS
 BAMF_IS_FACTORY
+BAMF_IS_FACTORY_CLASS
 BAMF_TYPE_FACTORY
 BamfFactory
 BamfFactoryClass
@@ -91,6 +86,7 @@ bamf_matcher_get_window_stack_for_monitor
 bamf_matcher_get_application_for_desktop_file
 <SUBSECTION Standard>
 BAMF_IS_MATCHER
+BAMF_IS_MATCHER_CLASS
 BAMF_MATCHER
 BAMF_MATCHER_CLASS
 BAMF_MATCHER_GET_CLASS
@@ -104,7 +100,8 @@ bamf_matcher_get_type
 <SECTION>
 <FILE>bamf-tab</FILE>
 <TITLE>BamfTab</TITLE>
-BAMF_TAB_CONST
+BAMF_TYPE_TAB
+BamfTabClass
 BamfTabPreviewReadyCallback
 bamf_tab_raise
 bamf_tab_close
@@ -113,21 +110,13 @@ bamf_tab_get_desktop_name
 bamf_tab_get_location
 bamf_tab_get_xid
 bamf_tab_get_is_foreground_tab
-<SUBSECTION Standard>
-BAMF_IS_TAB
-BAMF_TAB
-BAMF_TAB_CLASS
-BAMF_TAB_GET_CLASS
-BAMF_TYPE_TAB
 BamfTab
-BamfTabClass
-BamfTabPrivate
-bamf_tab_get_type
 </SECTION>
 
 <SECTION>
 <FILE>bamf-view</FILE>
 <TITLE>BamfView</TITLE>
+BAMF_TYPE_VIEW
 BAMF_VIEW_SIGNAL_ACTIVE_CHANGED
 BAMF_VIEW_SIGNAL_RUNNING_CHANGED
 BAMF_VIEW_SIGNAL_STARTING_CHANGED
@@ -140,6 +129,7 @@ BAMF_VIEW_SIGNAL_CHILD_REMOVED
 BAMF_VIEW_SIGNAL_CHILD_MOVED
 BAMF_VIEW_SIGNAL_CLOSED
 BamfClickBehavior
+BamfViewClass
 bamf_view_get_children
 bamf_view_peek_children
 bamf_view_has_child
@@ -156,16 +146,7 @@ bamf_view_set_sticky
 bamf_view_is_sticky
 bamf_view_get_click_suggestion
 bamf_view_user_visible
-<SUBSECTION Standard>
-BAMF_IS_VIEW
-BAMF_TYPE_VIEW
-BAMF_VIEW
-BAMF_VIEW_CLASS
-BAMF_VIEW_GET_CLASS
 BamfView
-BamfViewClass
-BamfViewPrivate
-bamf_view_get_type
 </SECTION>
 
 <SECTION>
@@ -180,10 +161,12 @@ bamf_window_new
 <SECTION>
 <FILE>bamf-window</FILE>
 <TITLE>BamfWindow</TITLE>
+BAMF_TYPE_WINDOW
 BAMF_WINDOW_SIGNAL_MONITOR_CHANGED
 BAMF_WINDOW_SIGNAL_MAXIMIZED_CHANGED
 BamfWindowType
 BamfWindowMaximizationType
+BamfWindowClass
 bamf_window_get_transient
 bamf_window_get_window_type
 bamf_window_get_xid
@@ -192,16 +175,7 @@ bamf_window_get_monitor
 bamf_window_get_utf8_prop
 bamf_window_maximized
 bamf_window_last_active
-<SUBSECTION Standard>
-BAMF_IS_WINDOW
-BAMF_TYPE_WINDOW
-BAMF_WINDOW
-BAMF_WINDOW_CLASS
-BAMF_WINDOW_GET_CLASS
 BamfWindow
-BamfWindowClass
-BamfWindowPrivate
-bamf_window_get_type
 </SECTION>
 
 <SECTION>

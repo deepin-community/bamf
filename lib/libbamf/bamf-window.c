@@ -40,12 +40,7 @@
 #include "bamf-window.h"
 #include "bamf-factory.h"
 
-G_DEFINE_TYPE (BamfWindow, bamf_window, BAMF_TYPE_VIEW);
-
-#define BAMF_WINDOW_GET_PRIVATE(o) \
-  (G_TYPE_INSTANCE_GET_PRIVATE ((o), BAMF_TYPE_WINDOW, BamfWindowPrivate))
-
-struct _BamfWindowPrivate
+typedef struct _BamfWindowPrivate
 {
   BamfDBusItemWindow        *proxy;
   guint32                    xid;
@@ -54,7 +49,9 @@ struct _BamfWindowPrivate
   gint                       monitor;
   BamfWindowType             type;
   BamfWindowMaximizationType maximized;
-};
+} BamfWindowPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (BamfWindow, bamf_window, BAMF_TYPE_VIEW);
 
 enum
 {
@@ -69,12 +66,15 @@ static guint window_signals[LAST_SIGNAL] = { 0 };
 time_t
 bamf_window_last_active (BamfWindow *self)
 {
+  BamfWindowPrivate *priv;
+
   g_return_val_if_fail (BAMF_IS_WINDOW (self), 0);
 
   if (BAMF_WINDOW_GET_CLASS (self)->last_active)
     return BAMF_WINDOW_GET_CLASS (self)->last_active (self);
 
-  return self->priv->last_active;
+  priv = bamf_window_get_instance_private (self);
+  return priv->last_active;
 }
 
 /**
@@ -97,7 +97,7 @@ bamf_window_get_transient (BamfWindow *self)
   if (BAMF_WINDOW_GET_CLASS (self)->get_transient)
     return BAMF_WINDOW_GET_CLASS (self)->get_transient (self);
 
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (self)))
     return NULL;
@@ -140,7 +140,7 @@ bamf_window_get_window_type (BamfWindow *self)
   if (BAMF_WINDOW_GET_CLASS (self)->get_window_type)
     return BAMF_WINDOW_GET_CLASS (self)->get_window_type (self);
 
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (priv->type != BAMF_WINDOW_UNKNOWN)
     return priv->type;
@@ -170,7 +170,7 @@ bamf_window_get_pid (BamfWindow *self)
   if (BAMF_WINDOW_GET_CLASS (self)->get_pid)
     return BAMF_WINDOW_GET_CLASS (self)->get_pid (self);
 
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (priv->pid != 0)
     return priv->pid;
@@ -200,7 +200,7 @@ bamf_window_get_xid (BamfWindow *self)
   if (BAMF_WINDOW_GET_CLASS (self)->get_xid)
     return BAMF_WINDOW_GET_CLASS (self)->get_xid (self);
 
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (priv->xid != 0)
     return priv->xid;
@@ -232,7 +232,7 @@ bamf_window_get_utf8_prop (BamfWindow *self, const char* xprop)
   if (BAMF_WINDOW_GET_CLASS (self)->get_utf8_prop)
     return BAMF_WINDOW_GET_CLASS (self)->get_utf8_prop (self, xprop);
 
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (self)))
     return NULL;
@@ -267,7 +267,7 @@ bamf_window_get_monitor (BamfWindow *self)
   if (BAMF_WINDOW_GET_CLASS (self)->get_monitor)
     return BAMF_WINDOW_GET_CLASS (self)->get_monitor (self);
 
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (priv->monitor != -2 || !_bamf_view_remote_ready (BAMF_VIEW (self)))
     {
@@ -297,7 +297,7 @@ bamf_window_maximized (BamfWindow *self)
   if (BAMF_WINDOW_GET_CLASS (self)->maximized)
     return BAMF_WINDOW_GET_CLASS (self)->maximized (self);
 
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (priv->maximized != -1 || !_bamf_view_remote_ready (BAMF_VIEW (self)))
     {
@@ -318,27 +318,32 @@ bamf_window_maximized (BamfWindow *self)
 static void
 bamf_window_active_changed (BamfView *view, gboolean active)
 {
-  BamfWindow *self;
-
   g_return_if_fail (BAMF_IS_WINDOW (view));
 
-  self = BAMF_WINDOW (view);
-
   if (active)
-    self->priv->last_active = time (NULL);
+    {
+      BamfWindowPrivate *priv;
+
+      priv = bamf_window_get_instance_private (BAMF_WINDOW (view));
+      priv->last_active = time (NULL);
+    }
 }
 
 static void
 bamf_window_on_monitor_changed (BamfDBusItemWindow *proxy, gint old, gint new, BamfWindow *self)
 {
-  self->priv->monitor = new;
+  BamfWindowPrivate *priv = bamf_window_get_instance_private (self);
+
+  priv->monitor = new;
   g_signal_emit (G_OBJECT (self), window_signals[MONITOR_CHANGED], 0, old, new);
 }
 
 static void
 bamf_window_on_maximized_changed (BamfDBusItemWindow *proxy, gint old, gint new, BamfWindow *self)
 {
-  self->priv->maximized = new;
+  BamfWindowPrivate *priv = bamf_window_get_instance_private (self);
+
+  priv->maximized = new;
   g_signal_emit (G_OBJECT (self), window_signals[MAXIMIZED_CHANGED], 0, old, new);
 }
 
@@ -348,7 +353,7 @@ bamf_window_unset_proxy (BamfWindow *self)
   BamfWindowPrivate *priv;
 
   g_return_if_fail (BAMF_IS_WINDOW (self));
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   if (!G_IS_DBUS_PROXY (priv->proxy))
     return;
@@ -367,7 +372,7 @@ bamf_window_set_path (BamfView *view, const char *path)
   GError *error = NULL;
 
   self = BAMF_WINDOW (view);
-  priv = self->priv;
+  priv = bamf_window_get_instance_private (self);
 
   bamf_window_unset_proxy (self);
   priv->proxy = _bamf_dbus_item_window_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
@@ -412,8 +417,6 @@ bamf_window_class_init (BamfWindowClass *klass)
   GObjectClass  *obj_class  = G_OBJECT_CLASS (klass);
   BamfViewClass *view_class = BAMF_VIEW_CLASS (klass);
 
-  g_type_class_add_private (obj_class, sizeof (BamfWindowPrivate));
-
   obj_class->dispose = bamf_window_dispose;
   view_class->active_changed = bamf_window_active_changed;
   view_class->set_path = bamf_window_set_path;
@@ -442,9 +445,7 @@ bamf_window_init (BamfWindow *self)
 {
   BamfWindowPrivate *priv;
 
-  priv = self->priv = BAMF_WINDOW_GET_PRIVATE (self);
-  priv->xid = 0;
-  priv->pid = 0;
+  priv = bamf_window_get_instance_private (self);
   priv->type = BAMF_WINDOW_UNKNOWN;
   priv->monitor = -2;
   priv->maximized = -1;

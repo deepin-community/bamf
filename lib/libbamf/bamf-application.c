@@ -45,11 +45,6 @@
 #include <gio/gdesktopappinfo.h>
 #include <string.h>
 
-G_DEFINE_TYPE (BamfApplication, bamf_application, BAMF_TYPE_VIEW);
-
-#define BAMF_APPLICATION_GET_PRIVATE(o) \
-  (G_TYPE_INSTANCE_GET_PRIVATE ((o), BAMF_TYPE_APPLICATION, BamfApplicationPrivate))
-
 enum
 {
   DESKTOP_FILE_UPDATED,
@@ -61,7 +56,7 @@ enum
 
 static guint application_signals[LAST_SIGNAL] = { 0 };
 
-struct _BamfApplicationPrivate
+typedef struct _BamfApplicationPrivate
 {
   BamfDBusItemApplication *proxy;
   gchar                   *application_type;
@@ -69,7 +64,9 @@ struct _BamfApplicationPrivate
   GList                   *cached_xids;
   gchar                  **cached_mimes;
   int                      show_stubs;
-};
+} BamfApplicationPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (BamfApplication, bamf_application, BAMF_TYPE_VIEW);
 
 /**
  * bamf_application_get_supported_mime_types:
@@ -84,7 +81,7 @@ bamf_application_get_supported_mime_types (BamfApplication *application)
   GError *error = NULL;
 
   g_return_val_if_fail (BAMF_IS_APPLICATION (application), NULL);
-  priv = application->priv;
+  priv = bamf_application_get_instance_private (application);
 
   if (priv->cached_mimes)
     return g_strdupv (priv->cached_mimes);
@@ -122,7 +119,7 @@ bamf_application_get_desktop_file (BamfApplication *application)
   GError *error = NULL;
 
   g_return_val_if_fail (BAMF_IS_APPLICATION (application), FALSE);
-  priv = application->priv;
+  priv = bamf_application_get_instance_private (application);
 
   if (priv->desktop_file)
     return priv->desktop_file;
@@ -172,7 +169,7 @@ bamf_application_get_application_menu (BamfApplication *application,
   g_return_val_if_fail (BAMF_IS_APPLICATION (application), FALSE);
   g_return_val_if_fail (name != NULL && object_path != NULL, FALSE);
 
-  priv = application->priv;
+  priv = bamf_application_get_instance_private (application);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (application)))
     return FALSE;
@@ -214,7 +211,7 @@ bamf_application_get_application_type (BamfApplication *application)
   GError *error = NULL;
 
   g_return_val_if_fail (BAMF_IS_APPLICATION (application), FALSE);
-  priv = application->priv;
+  priv = bamf_application_get_instance_private (application);
 
   if (priv->application_type)
     return priv->application_type;
@@ -256,7 +253,7 @@ bamf_application_get_xids (BamfApplication *application)
   GError *error = NULL;
 
   g_return_val_if_fail (BAMF_IS_APPLICATION (application), FALSE);
-  priv = application->priv;
+  priv = bamf_application_get_instance_private (application);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (application)))
     return NULL;
@@ -390,7 +387,7 @@ bamf_application_get_show_menu_stubs (BamfApplication * application)
 
   g_return_val_if_fail (BAMF_IS_APPLICATION (application), TRUE);
 
-  priv = application->priv;
+  priv = bamf_application_get_instance_private (application);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (application)))
     return TRUE;
@@ -440,7 +437,7 @@ bamf_application_get_focusable_child (BamfApplication *application)
   GError *error = NULL;
 
   g_return_val_if_fail (BAMF_IS_APPLICATION (application), FALSE);
-  priv = application->priv;
+  priv = bamf_application_get_instance_private (application);
 
   if (!_bamf_view_remote_ready (BAMF_VIEW (application)))
     return NULL;
@@ -464,8 +461,10 @@ bamf_application_get_focusable_child (BamfApplication *application)
 static void
 bamf_application_on_desktop_file_updated (BamfDBusItemApplication *proxy, const char *desktop_file, BamfApplication *self)
 {
-  g_free (self->priv->desktop_file);
-  self->priv->desktop_file = g_strdup (desktop_file);
+  BamfApplicationPrivate *priv = bamf_application_get_instance_private (self);
+
+  g_free (priv->desktop_file);
+  priv->desktop_file = g_strdup (desktop_file);
 
   g_signal_emit (self, application_signals[DESKTOP_FILE_UPDATED], 0, desktop_file);
 }
@@ -473,13 +472,15 @@ bamf_application_on_desktop_file_updated (BamfDBusItemApplication *proxy, const 
 static void
 bamf_application_on_child_added (BamfApplication *self, BamfView *view)
 {
+  BamfApplicationPrivate *priv = bamf_application_get_instance_private (self);
+
   if (BAMF_IS_WINDOW (view))
     {
       guint32 xid = bamf_window_get_xid (BAMF_WINDOW (view));
 
-      if (!g_list_find (self->priv->cached_xids, GUINT_TO_POINTER (xid)))
+      if (!g_list_find (priv->cached_xids, GUINT_TO_POINTER (xid)))
         {
-          self->priv->cached_xids = g_list_prepend (self->priv->cached_xids, GUINT_TO_POINTER (xid));
+          priv->cached_xids = g_list_prepend (priv->cached_xids, GUINT_TO_POINTER (xid));
         }
 
       g_signal_emit (G_OBJECT (self), application_signals[WINDOW_ADDED], 0, view);
@@ -489,10 +490,12 @@ bamf_application_on_child_added (BamfApplication *self, BamfView *view)
 static void
 bamf_application_on_child_removed (BamfApplication *self, BamfView *view)
 {
+  BamfApplicationPrivate *priv = bamf_application_get_instance_private (self);
+
   if (BAMF_IS_WINDOW (view))
     {
       guint32 xid = bamf_window_get_xid (BAMF_WINDOW (view));
-      self->priv->cached_xids = g_list_remove (self->priv->cached_xids, GUINT_TO_POINTER (xid));
+      priv->cached_xids = g_list_remove (priv->cached_xids, GUINT_TO_POINTER (xid));
 
       g_signal_emit (G_OBJECT (self), application_signals[WINDOW_REMOVED], 0, view);
     }
@@ -501,18 +504,23 @@ bamf_application_on_child_removed (BamfApplication *self, BamfView *view)
 GList *
 _bamf_application_get_cached_xids (BamfApplication *self)
 {
+  BamfApplicationPrivate *priv;
+
   g_return_val_if_fail (BAMF_IS_APPLICATION (self), NULL);
 
-  return self->priv->cached_xids;
+  priv = bamf_application_get_instance_private (self);
+  return priv->cached_xids;
 }
 
 static void
 bamf_application_on_supported_mime_types_changed (BamfDBusItemApplication *proxy, const gchar *const *mimes, BamfApplication *self)
 {
-  if (self->priv->cached_mimes)
-    g_strfreev (self->priv->cached_mimes);
+  BamfApplicationPrivate *priv = bamf_application_get_instance_private (self);
 
-  self->priv->cached_mimes = g_strdupv ((gchar**)mimes);
+  if (priv->cached_mimes)
+    g_strfreev (priv->cached_mimes);
+
+  priv->cached_mimes = g_strdupv ((gchar**)mimes);
 }
 
 static void
@@ -521,7 +529,7 @@ bamf_application_unset_proxy (BamfApplication* self)
   BamfApplicationPrivate *priv;
 
   g_return_if_fail (BAMF_IS_APPLICATION (self));
-  priv = self->priv;
+  priv = bamf_application_get_instance_private (self);
 
   if (G_IS_DBUS_PROXY (priv->proxy))
     {
@@ -538,7 +546,7 @@ bamf_application_dispose (GObject *object)
   BamfApplicationPrivate *priv;
 
   self = BAMF_APPLICATION (object);
-  priv = self->priv;
+  priv = bamf_application_get_instance_private (self);
 
   if (priv->application_type)
     {
@@ -578,7 +586,7 @@ bamf_application_set_path (BamfView *view, const char *path)
   GError *error = NULL;
 
   self = BAMF_APPLICATION (view);
-  priv = self->priv;
+  priv = bamf_application_get_instance_private (self);
 
   bamf_application_unset_proxy (self);
   priv->proxy = _bamf_dbus_item_application_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
@@ -625,6 +633,7 @@ static void
 bamf_application_set_sticky (BamfView *view, gboolean sticky)
 {
   BamfApplication *self = BAMF_APPLICATION (view);
+  BamfApplicationPrivate *priv = bamf_application_get_instance_private (self);
 
   if (sticky)
     {
@@ -632,7 +641,7 @@ bamf_application_set_sticky (BamfView *view, gboolean sticky)
       bamf_application_get_application_type (self);
 
       /* When setting the application sticky, we need to cache the relevant values */
-      if (!self->priv->cached_mimes)
+      if (!priv->cached_mimes)
         {
           gchar **tmp_mimes = bamf_application_get_supported_mime_types (self);
           g_strfreev (tmp_mimes);
@@ -650,6 +659,7 @@ bamf_application_set_sticky (BamfView *view, gboolean sticky)
 static void
 bamf_application_load_data_from_file (BamfApplication *self, GKeyFile * keyfile)
 {
+  BamfApplicationPrivate *priv = bamf_application_get_instance_private (self);
   GDesktopAppInfo *desktop_info;
   GIcon *gicon;
   char *fullname;
@@ -689,10 +699,10 @@ bamf_application_load_data_from_file (BamfApplication *self, GKeyFile * keyfile)
 
   _bamf_view_set_cached_icon (BAMF_VIEW (self), icon);
 
-  self->priv->cached_mimes = g_key_file_get_string_list (keyfile, G_KEY_FILE_DESKTOP_GROUP,
-                                                         G_KEY_FILE_DESKTOP_KEY_MIME_TYPE, NULL, NULL);
+  priv->cached_mimes = g_key_file_get_string_list (keyfile, G_KEY_FILE_DESKTOP_GROUP,
+                                                   G_KEY_FILE_DESKTOP_KEY_MIME_TYPE, NULL, NULL);
 
-  self->priv->application_type = g_strdup ("system");
+  priv->application_type = g_strdup ("system");
 
   g_free (icon);
   g_free (name);
@@ -710,8 +720,6 @@ bamf_application_class_init (BamfApplicationClass *klass)
   view_class->set_path   = bamf_application_set_path;
   view_class->set_sticky = bamf_application_set_sticky;
   view_class->click_behavior = bamf_application_get_click_suggestion;
-
-  g_type_class_add_private (obj_class, sizeof (BamfApplicationPrivate));
 
   application_signals [DESKTOP_FILE_UPDATED] =
     g_signal_new (BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED,
@@ -743,7 +751,7 @@ bamf_application_init (BamfApplication *self)
 {
   BamfApplicationPrivate *priv;
 
-  priv = self->priv = BAMF_APPLICATION_GET_PRIVATE (self);
+  priv = bamf_application_get_instance_private (self);
   priv->show_stubs = -1;
 
   g_signal_connect (self, "child-added", G_CALLBACK (bamf_application_on_child_added), NULL);
@@ -765,6 +773,7 @@ BamfApplication *
 bamf_application_new_favorite (const char * favorite_path)
 {
   BamfApplication *self;
+  BamfApplicationPrivate *priv;
   GKeyFile        *desktop_keyfile;
   gchar           *type;
   gboolean         supported = FALSE;
@@ -793,7 +802,8 @@ bamf_application_new_favorite (const char * favorite_path)
 
   self = g_object_new (BAMF_TYPE_APPLICATION, NULL);
 
-  self->priv->desktop_file = g_strdup (favorite_path);
+  priv = bamf_application_get_instance_private (self);
+  priv->desktop_file = g_strdup (favorite_path);
   bamf_application_load_data_from_file (self, desktop_keyfile);
 
   return self;

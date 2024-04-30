@@ -5,7 +5,7 @@ Maintainer: Debian+Ubuntu MATE Packaging Team <debian-mate@lists.debian.org>
 Uploaders: Mike Gabriel <sunweaver@debian.org>,
            Didier Roche <didrocks@ubuntu.com>,
 Build-Depends: dbus (>= 1.8),
-               debhelper-compat (=12),
+               debhelper-compat (= 13),
                gobject-introspection (>= 0.6.5-3),
                gtk-doc-tools,
                libgirepository1.0-dev,
@@ -17,7 +17,7 @@ Build-Depends: dbus (>= 1.8),
                python3-lxml,
                valac,
                xvfb,
-Standards-Version: 4.4.1
+Standards-Version: 4.6.0
 Rules-Requires-Root: no
 Homepage: https://launchpad.net/bamf
 Vcs-Browser: https://salsa.debian.org/debian-mate-team/bamf

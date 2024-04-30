@@ -20,14 +20,7 @@
 
 #include "bamf-view.h"
 
-#define BAMF_VIEW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE(obj, \
-                                    BAMF_TYPE_VIEW, BamfViewPrivate))
-
 static void bamf_view_dbus_view_iface_init (BamfDBusItemViewIface *iface);
-G_DEFINE_TYPE_WITH_CODE (BamfView, bamf_view, BAMF_DBUS_ITEM_TYPE_OBJECT_SKELETON,
-                         G_IMPLEMENT_INTERFACE (BAMF_DBUS_ITEM_TYPE_VIEW,
-                                                bamf_view_dbus_view_iface_init));
-
 #define STARTING_MAX_WAIT 15
 
 enum
@@ -84,6 +77,11 @@ struct _BamfViewPrivate
   guint active_changed_idle;
 };
 
+G_DEFINE_TYPE_WITH_CODE (BamfView, bamf_view, BAMF_DBUS_ITEM_TYPE_OBJECT_SKELETON,
+                         G_ADD_PRIVATE(BamfView)
+                         G_IMPLEMENT_INTERFACE (BAMF_DBUS_ITEM_TYPE_VIEW,
+                                                bamf_view_dbus_view_iface_init));
+
 static gboolean
 on_active_changed_idle (gpointer data)
 {
@@ -92,8 +90,8 @@ on_active_changed_idle (gpointer data)
   BamfView *self = BAMF_VIEW (data);
   gboolean active = bamf_view_is_active (self);
 
-  g_signal_emit_by_name (self, "active-changed", active);
   self->priv->active_changed_idle = 0;
+  g_signal_emit_by_name (self, "active-changed", active);
 
   return FALSE;
 }
@@ -157,8 +155,8 @@ on_starting_timeout (gpointer data)
 {
   BamfView *view = data;
 
-  bamf_view_set_starting (view, NULL, FALSE);
   view->priv->starting_timeout = 0;
+  bamf_view_set_starting (view, NULL, FALSE);
 
   return FALSE;
 }
@@ -964,7 +962,7 @@ bamf_view_set_property (GObject *object, guint property_id, const GValue *value,
 static void
 bamf_view_init (BamfView * self)
 {
-  self->priv = BAMF_VIEW_GET_PRIVATE (self);
+  self->priv = bamf_view_get_instance_private (self);
 
   /* Initializing the dbus interface */
   self->priv->dbus_iface = _bamf_dbus_item_view_skeleton_new ();
@@ -1030,8 +1028,6 @@ bamf_view_class_init (BamfViewClass * klass)
   object_class->finalize = bamf_view_finalize;
   object_class->get_property = bamf_view_get_property;
   object_class->set_property = bamf_view_set_property;
-
-  g_type_class_add_private (klass, sizeof (BamfViewPrivate));
 
   /* Overriding the properties defined in the interface, this is needed
    * but we actually don't use these properties, as we act like a proxy       */

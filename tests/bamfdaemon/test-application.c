@@ -33,7 +33,6 @@ void ignore_fatal_errors (void);
 
 static gboolean          signal_seen   = FALSE;
 static gboolean          signal_result = FALSE;
-static char *            signal_window = NULL;
 static GDBusConnection * gdbus_connection = NULL;
 
 static GFile *
@@ -436,12 +435,16 @@ test_urgent (void)
   application = bamf_application_new ();
 
   g_signal_connect (G_OBJECT (application), "urgent-changed", (GCallback) on_urgent_changed, NULL);
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (application), gdbus_connection));
 
   test1 = bamf_legacy_window_test_new (20, "Window X", "class", "exec");
-  test2 = bamf_legacy_window_test_new (20, "Window Y", "class", "exec");
+  test2 = bamf_legacy_window_test_new (21, "Window Y", "class", "exec");
 
   window1 = bamf_window_new (BAMF_LEGACY_WINDOW (test1));
   window2 = bamf_window_new (BAMF_LEGACY_WINDOW (test2));
+
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (window1), gdbus_connection));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (window2), gdbus_connection));
 
   // Ensure we are not visible with no windows
   g_assert (!bamf_view_is_urgent (BAMF_VIEW (application)));
@@ -478,6 +481,10 @@ test_urgent (void)
   g_assert (!bamf_view_is_urgent (BAMF_VIEW (application)));
   g_assert (signal_seen);
   g_assert (!signal_result);
+
+  g_object_unref (window1);
+  g_object_unref (window2);
+  g_object_unref (application);
 }
 
 static void
@@ -497,14 +504,18 @@ test_active (void)
   BamfLegacyWindowTest *test1, *test2;
 
   application = bamf_application_new ();
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (application), gdbus_connection));
 
   g_signal_connect (G_OBJECT (application), "active-changed", (GCallback) on_active_changed, NULL);
 
   test1 = bamf_legacy_window_test_new (20, "Window X", "class", "exec");
-  test2 = bamf_legacy_window_test_new (20, "Window Y", "class", "exec");
+  test2 = bamf_legacy_window_test_new (21, "Window Y", "class", "exec");
 
   window1 = bamf_window_new (BAMF_LEGACY_WINDOW (test1));
   window2 = bamf_window_new (BAMF_LEGACY_WINDOW (test2));
+
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (window1), gdbus_connection));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (window2), gdbus_connection));
 
   // Ensure we are not active with no windows
   g_assert (!bamf_view_is_active (BAMF_VIEW (application)));
@@ -546,6 +557,10 @@ test_active (void)
   g_assert (!bamf_view_is_active (BAMF_VIEW (application)));
   g_assert (signal_seen);
   g_assert (!signal_result);
+
+  g_object_unref (window1);
+  g_object_unref (window2);
+  g_object_unref (application);
 }
 
 static void
@@ -675,14 +690,18 @@ test_user_visible (void)
   BamfLegacyWindowTest *test1, *test2;
 
   application = bamf_application_new ();
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (application), gdbus_connection));
 
   g_signal_connect (G_OBJECT (application), "user-visible-changed", (GCallback) on_user_visible_changed, NULL);
 
   test1 = bamf_legacy_window_test_new (20, "Window X", "class", "exec");
-  test2 = bamf_legacy_window_test_new (20, "Window Y", "class", "exec");
+  test2 = bamf_legacy_window_test_new (21, "Window Y", "class", "exec");
 
   window1 = bamf_window_new (BAMF_LEGACY_WINDOW (test1));
   window2 = bamf_window_new (BAMF_LEGACY_WINDOW (test2));
+
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (window1), gdbus_connection));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (window2), gdbus_connection));
 
   // Ensure we are not visible with no windows
   g_assert (!bamf_view_is_user_visible (BAMF_VIEW (application)));
@@ -726,95 +745,9 @@ test_user_visible (void)
   g_assert (!bamf_view_is_user_visible (BAMF_VIEW (application)));
   g_assert (signal_seen);
   g_assert (!signal_result);
-}
 
-static void
-on_window_added (BamfApplication *application, char *window, gpointer data)
-{
-  signal_seen = TRUE;
-  signal_window = g_strdup (window);
-}
-
-static void
-test_window_added (void)
-{
-  signal_seen = FALSE;
-
-  BamfApplication *application;
-  BamfWindow *window;
-  BamfLegacyWindowTest *test;
-  const char *path;
-
-  application = bamf_application_new ();
-
-  g_signal_connect (G_OBJECT (application), "window-added", (GCallback) on_window_added, NULL);
-
-  test = bamf_legacy_window_test_new (20, "Window X", "class", "exec");
-  window = bamf_window_new (BAMF_LEGACY_WINDOW (test));
-
-  bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (window));
-
-  // Ensure we dont signal things that are not on the bus
-  g_assert (!signal_seen);
-
-  bamf_view_remove_child (BAMF_VIEW (application), BAMF_VIEW (window));
-
-  path = bamf_view_export_on_bus (BAMF_VIEW (window), gdbus_connection);
-
-  bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (window));
-
-  g_assert (signal_seen);
-  g_assert_cmpstr (signal_window, ==, path);
-
-  signal_seen = FALSE;
-
-  g_object_unref (window);
-  g_object_unref (test);
-  g_object_unref (application);
-}
-
-static void
-on_window_removed (BamfApplication *application, char *window, gpointer data)
-{
-  signal_seen = TRUE;
-  signal_window = g_strdup (window);
-}
-
-static void
-test_window_removed (void)
-{
-  signal_seen = FALSE;
-
-  BamfApplication *application;
-  BamfWindow *window;
-  BamfLegacyWindowTest *test;
-  const char *path;
-
-  application = bamf_application_new ();
-
-  g_signal_connect (G_OBJECT (application), "window-removed", (GCallback) on_window_removed, NULL);
-
-  test = bamf_legacy_window_test_new (20, "Window X", "class", "exec");
-  window = bamf_window_new (BAMF_LEGACY_WINDOW (test));
-
-  bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (window));
-  bamf_view_remove_child (BAMF_VIEW (application), BAMF_VIEW (window));
-
-  // Ensure we dont signal things that are not on the bus
-  g_assert (!signal_seen);
-
-  path = bamf_view_export_on_bus (BAMF_VIEW (window), gdbus_connection);
-
-  bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (window));
-  bamf_view_remove_child (BAMF_VIEW (application), BAMF_VIEW (window));
-
-  g_assert (signal_seen);
-  g_assert (g_strcmp0 (signal_window, path) == 0);
-
-  signal_seen = FALSE;
-
-  g_object_unref (window);
-  g_object_unref (test);
+  g_object_unref (window1);
+  g_object_unref (window2);
   g_object_unref (application);
 }
 
@@ -1025,29 +958,36 @@ test_app_main_child_on_window_removal (void)
   BamfWindow *win1, *win2, *win3, *win4, *dialog;
 
   application = bamf_application_new ();
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (application), gdbus_connection));
+
   lwin = bamf_legacy_window_test_new (10, "window1", NULL, "execution-binary");
   win1 = bamf_window_new (BAMF_LEGACY_WINDOW (lwin));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (win1), gdbus_connection));
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (win1));
   g_object_unref (lwin);
 
   lwin = bamf_legacy_window_test_new (20, "window2", NULL, "execution-binary");
   win2 = bamf_window_new (BAMF_LEGACY_WINDOW (lwin));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (win2), gdbus_connection));
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (win2));
   g_object_unref (lwin);
 
   lwin = bamf_legacy_window_test_new (21, "dialog", NULL, "execution-binary");
   lwin->window_type = BAMF_WINDOW_DIALOG;
   dialog = bamf_window_new (BAMF_LEGACY_WINDOW (lwin));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (dialog), gdbus_connection));
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (dialog));
   g_object_unref (lwin);
 
   lwin = bamf_legacy_window_test_new (30, "window3", NULL, "execution-binary");
   win3 = bamf_window_new (BAMF_LEGACY_WINDOW (lwin));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (win3), gdbus_connection));
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (win3));
   g_object_unref (lwin);
 
   lwin = bamf_legacy_window_test_new (40, "window4", NULL, "execution-binary");
   win4 = bamf_window_new (BAMF_LEGACY_WINDOW (lwin));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (win4), gdbus_connection));
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (win4));
   g_object_unref (lwin);
 
@@ -1089,6 +1029,7 @@ test_app_main_child_on_window_replace_on_removal (void)
 
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (win));
   g_assert (bamf_application_get_main_child (application) == BAMF_VIEW (win));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (win), gdbus_connection));
   bamf_view_remove_child (BAMF_VIEW (application), BAMF_VIEW (win));
   g_assert (!bamf_application_get_main_child (application));
   bamf_legacy_window_test_set_name (lwin, "don't crash here!");
@@ -1109,6 +1050,7 @@ test_desktop_app_create_local_desktop_file (void)
   bamf_application_set_desktop_file (application, DESKTOP_FILE);
   lwin = bamf_legacy_window_test_new (20, "window", "test-bamf-class", "execution-binary");
   win = bamf_window_new (BAMF_LEGACY_WINDOW (lwin));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (win), gdbus_connection));
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (win));
 
   g_assert (!bamf_application_create_local_desktop_file (application));
@@ -1128,6 +1070,7 @@ test_desktopless_app_create_local_desktop_file_invalid_exec (void)
   application = bamf_application_new ();
   lwin = bamf_legacy_window_test_new (20, "window", "test-bamf-class", NULL);
   win = bamf_window_new (BAMF_LEGACY_WINDOW (lwin));
+  g_assert (bamf_view_export_on_bus (BAMF_VIEW (win), gdbus_connection));
   bamf_view_add_child (BAMF_VIEW (application), BAMF_VIEW (win));
 
   g_assert (!bamf_application_create_local_desktop_file (application));
@@ -1236,23 +1179,33 @@ verify_application_desktop_file_content (BamfApplication *application)
       g_clear_pointer (&str_value, g_free);
     }
 
-  const gchar *current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+  gchar *current_desktop = g_strdup (g_getenv ("XDG_CURRENT_DESKTOP"));
 
   if (current_desktop)
     {
       gchar **list;
       gsize len;
+      gchar** desktops_list = g_strsplit (current_desktop, ":", 0);
+      int i;
+
+      current_desktop = g_strdup (desktops_list[0]);
       list = g_key_file_get_string_list (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                          G_KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN,
                                          &len, &error);
       g_assert (!error);
-      g_assert_cmpuint (len, ==, 1);
-      g_assert_cmpstr (*list, ==, current_desktop);
+      g_assert_cmpuint (len, ==, g_strv_length (desktops_list));
+
+      for (i = 0; i < len; i++)
+        g_assert_cmpstr (desktops_list[i], ==, list[i]);
+
+      g_strfreev (desktops_list);
+      g_strfreev (list);
     }
 
-  gchar *generator = g_strdup_printf ("X-%sGenerated", current_desktop ? current_desktop : "BAMF");
+  gchar *generator = g_strdup_printf ("X-%s-Generated", current_desktop ? current_desktop : "BAMF");
   g_assert (g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP, generator, &error));
   g_assert (!error);
+  g_free (current_desktop);
   g_free (generator);
 
   g_key_file_free (key_file);
@@ -1515,6 +1468,4 @@ test_application_create_suite (GDBusConnection *connection)
   g_test_add_func (DOMAIN"/Events/Active", test_active);
   g_test_add_func (DOMAIN"/Events/Urgent", test_urgent);
   g_test_add_func (DOMAIN"/Events/UserVisible", test_user_visible);
-  g_test_add_func (DOMAIN"/Events/WindowAdded", test_window_added);
-  g_test_add_func (DOMAIN"/Events/WindowRemoved", test_window_removed);
 }

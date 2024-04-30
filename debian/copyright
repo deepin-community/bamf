@@ -2,6 +2,33 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Bamf
 Upstream-Contact: Jason Smith <jason.smith@canonical.com>
 Source: https://code.launchpad.net/bamf
+Files-Excluded: Makefile.in
+ aclocal.m4
+ compile
+ config.guess
+ config.h.in
+ config.sub
+ configure
+ data/Makefile.in
+ depcomp
+ doc/Makefile.in
+ doc/reference/Makefile.in
+ doc/reference/libbamf/Makefile.in
+ gtk-doc.make
+ install-sh
+ lib/libbamf-private/Makefile.in
+ lib/libbamf/Makefile.in
+ ltmain.sh
+ m4/libtool.m4
+ m4/ltoptions.m4
+ m4/ltsugar.m4
+ m4/ltversion.m4
+ m4/lt~obsolete.m4
+ missing
+ src/Makefile.in
+ tests/Makefile.in
+ tests/bamfdaemon/Makefile.in
+ tests/libbamf/Makefile.in
 
 Files: lib/libbamf-private/bamf-private.h
  lib/libbamf/bamf-view-private.h
@@ -128,6 +155,11 @@ Comment:
  Assuming same license as found in libbamf code files.
  Assuming Canonical Ltd. as copyright holder for all those files.
 
+Files: m4/gtk-doc.m4
+Copyright: 2003, James Henstridge
+           2007-2017, Stefan Sauer
+License: GPL-3+
+
 Files: AUTHORS
  ChangeLog
  INSTALL
@@ -143,6 +175,7 @@ Files: AUTHORS
  data/bamfdaemon-dbus-runner.in
  data/bamfdaemon.conf.in
  data/bamfdaemon.service.in
+ m4/gcov.m4
  src/Makefile.am
  tests/Makefile.am
  tests/Makefile.am.gtests
@@ -220,6 +253,24 @@ License: GPL-3
  You should have received a copy of the GNU General Public License along
  with this package; if not, write to the Free Software Foundation, Inc.,
  51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ can be found in `/usr/share/common-licenses/GPL-3'.
+
+License: GPL-3+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  .
  On Debian systems, the complete text of the GNU General Public License
  can be found in `/usr/share/common-licenses/GPL-3'.

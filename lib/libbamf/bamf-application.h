@@ -36,35 +36,11 @@ G_BEGIN_DECLS
 
 #define BAMF_TYPE_APPLICATION (bamf_application_get_type ())
 
-#define BAMF_APPLICATION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-        BAMF_TYPE_APPLICATION, BamfApplication))
-
-#define BAMF_APPLICATION_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass),\
-        BAMF_TYPE_APPLICATION, BamfApplicationClass))
-
-#define BAMF_IS_APPLICATION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-        BAMF_TYPE_APPLICATION))
-
-#define BAMF_IS_APPLICATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-        BAMF_TYPE_APPLICATION))
-
-#define BAMF_APPLICATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-        BAMF_TYPE_APPLICATION, BamfApplicationClass))
-
 #define BAMF_APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED "desktop-file-updated"
 #define BAMF_APPLICATION_SIGNAL_WINDOW_ADDED         "window-added"
 #define BAMF_APPLICATION_SIGNAL_WINDOW_REMOVED       "window-removed"
 
-typedef struct _BamfApplication        BamfApplication;
-typedef struct _BamfApplicationClass   BamfApplicationClass;
-typedef struct _BamfApplicationPrivate BamfApplicationPrivate;
-
-struct _BamfApplication
-{
-  BamfView parent;
-
-  BamfApplicationPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE (BamfApplication, bamf_application, BAMF, APPLICATION, BamfView);
 
 struct _BamfApplicationClass
 {
@@ -78,8 +54,6 @@ struct _BamfApplicationClass
   void (*_application_padding5) (void);
   void (*_application_padding6) (void);
 };
-
-GType             bamf_application_get_type             (void) G_GNUC_CONST;
 
 const gchar     * bamf_application_get_application_type (BamfApplication *application);
 

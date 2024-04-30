@@ -27,13 +27,7 @@
 #include <string.h>
 #include <gio/gdesktopappinfo.h>
 
-#define BAMF_APPLICATION_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE(obj, \
-BAMF_TYPE_APPLICATION, BamfApplicationPrivate))
-
 static void bamf_application_dbus_application_iface_init (BamfDBusItemApplicationIface *iface);
-G_DEFINE_TYPE_WITH_CODE (BamfApplication, bamf_application, BAMF_TYPE_VIEW,
-                         G_IMPLEMENT_INTERFACE (BAMF_DBUS_ITEM_TYPE_APPLICATION,
-                                                bamf_application_dbus_application_iface_init));
 
 struct _BamfApplicationPrivate
 {
@@ -47,6 +41,11 @@ struct _BamfApplicationPrivate
   char ** mimes;
   gboolean show_stubs;
 };
+
+G_DEFINE_TYPE_WITH_CODE (BamfApplication, bamf_application, BAMF_TYPE_VIEW,
+                         G_ADD_PRIVATE(BamfApplication)
+                         G_IMPLEMENT_INTERFACE (BAMF_DBUS_ITEM_TYPE_APPLICATION,
+                                                bamf_application_dbus_application_iface_init));
 
 enum
 {
@@ -676,14 +675,19 @@ bamf_application_create_local_desktop_file (BamfApplication *self)
       gchar** show_in_list = g_strsplit (curdesktop, ":", 0);
       g_key_file_set_string_list (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                   G_KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN,
-                                  (const gchar * const *) show_in_list, 1);
+                                  (const gchar * const *) show_in_list,
+                                  g_strv_length (show_in_list));
+
+      gchar *generator = g_strdup_printf ("X-%s-Generated", show_in_list[0]);
+      g_key_file_set_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP, generator, TRUE);
+
+      g_free (generator);
       g_strfreev (show_in_list);
     }
-
-  gchar *generator = g_strdup_printf ("X-%sGenerated", curdesktop && !g_strstr_len(curdesktop, -1, ":") ?
-                                                                      curdesktop : "BAMF");
-  g_key_file_set_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP, generator, TRUE);
-  g_free (generator);
+  else
+    {
+      g_key_file_set_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP, "X-BAMF-Generated", TRUE);
+    }
 
   gsize data_length = 0;
   gchar *data = g_key_file_to_data (key_file, &data_length, &error);
@@ -1377,7 +1381,7 @@ static void
 bamf_application_init (BamfApplication * self)
 {
   BamfApplicationPrivate *priv;
-  priv = self->priv = BAMF_APPLICATION_GET_PRIVATE (self);
+  priv = self->priv = bamf_application_get_instance_private (self);
 
   priv->app_type = BAMF_APPLICATION_SYSTEM;
   priv->show_stubs = TRUE;
@@ -1446,8 +1450,6 @@ bamf_application_class_init (BamfApplicationClass * klass)
   klass->get_supported_mime_types = bamf_application_default_get_supported_mime_types;
   klass->get_close_when_empty = bamf_application_default_get_close_when_empty;
   klass->supported_mimes_changed = bamf_application_supported_mime_types_changed;
-
-  g_type_class_add_private (klass, sizeof (BamfApplicationPrivate));
 
   application_signals[SUPPORTED_MIMES_CHANGED] =
     g_signal_new ("supported-mimes-changed",

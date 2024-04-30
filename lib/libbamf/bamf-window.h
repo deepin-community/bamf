@@ -36,34 +36,10 @@ G_BEGIN_DECLS
 
 #define BAMF_TYPE_WINDOW (bamf_window_get_type ())
 
-#define BAMF_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-        BAMF_TYPE_WINDOW, BamfWindow))
-
-#define BAMF_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass),\
-        BAMF_TYPE_WINDOW, BamfWindowClass))
-
-#define BAMF_IS_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-        BAMF_TYPE_WINDOW))
-
-#define BAMF_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-        BAMF_TYPE_WINDOW))
-
-#define BAMF_WINDOW_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-        BAMF_TYPE_WINDOW, BamfWindowClass))
-
 #define BAMF_WINDOW_SIGNAL_MONITOR_CHANGED   "monitor-changed"
 #define BAMF_WINDOW_SIGNAL_MAXIMIZED_CHANGED "maximized-changed"
 
-typedef struct _BamfWindow        BamfWindow;
-typedef struct _BamfWindowClass   BamfWindowClass;
-typedef struct _BamfWindowPrivate BamfWindowPrivate;
-
-struct _BamfWindow
-{
-  BamfView parent;
-
-  BamfWindowPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE (BamfWindow, bamf_window, BAMF, WINDOW, BamfView);
 
 typedef enum
 {
@@ -109,8 +85,6 @@ struct _BamfWindowClass
   void (*_window_padding3) (void);
   void (*_window_padding4) (void);
 };
-
-GType             bamf_window_get_type                  (void) G_GNUC_CONST;
 
 BamfWindow      * bamf_window_get_transient             (BamfWindow *self);
 

@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT(bamf, 0.5.4, dx-team@canonical.com)
+AC_INIT(bamf, 0.5.6, dx-team@canonical.com)
 AC_PREREQ(2.69)
 AC_SUBST(LIBBAMF_VER, 3)
 AC_SUBST(LIBBAMF_SONAME, 2:0:0)
@@ -15,26 +15,22 @@ AM_SILENT_RULES([yes])
 AC_CONFIG_MACRO_DIR([m4])
 
 GNOME_COMMON_INIT
-GNOME_COMPILE_WARNINGS(maximum)
 
 AM_MAINTAINER_MODE
-AM_DISABLE_STATIC
-AM_PROG_LIBTOOL
 AC_ISC_POSIX
 AC_SUBST(ACLOCAL_AMFLAFS, "$ACLOCAL_FLAGS -I m4")
 
 PKG_PROG_PKG_CONFIG
 if test "x$PKG_CONFIG" = "x"; then AC_MSG_ERROR([You need to install pkg-config]); fi
 
+LT_INIT([disable-static])
+LT_LIB_M
+
 # Checks for programs.
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
 AC_HEADER_STDC
-
-SHAMROCK_EXPAND_LIBDIR
-SHAMROCK_EXPAND_BINDIR
-SHAMROCK_EXPAND_DATADIR
 
 #
 # pkg-config
@@ -44,7 +40,7 @@ PKG_PROG_PKG_CONFIG
 #
 # glib
 #
-PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.32.0 gio-2.0 >= 2.30.0 gio-unix-2.0)
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.38.0 gio-2.0 >= 2.30.0 gio-unix-2.0 gobject-2.0 gmodule-2.0)
 
 #
 # gdbus-codegen
@@ -113,11 +109,11 @@ GTK_DOC_CHECK(1.0)
 # gtester2xunit checks    #
 ###########################
 
-AC_PATH_PROG([PYTHON],[python])
+AC_PATH_PROG([PYTHON],[python3])
 AC_MSG_CHECKING(for gtester2xunit dependencies)
-if !($PYTHON -c "import libxslt, libxml2" 2> /dev/null); then
+if !($PYTHON -c "from lxml import etree" 2> /dev/null); then
   AC_MSG_RESULT([no])
-  AC_MSG_ERROR([You need to install python-libxslt1 and python-libxml2]);
+  AC_MSG_ERROR([You need to install python3-lxml]);
 fi
 AC_MSG_RESULT([yes])
 
@@ -154,8 +150,39 @@ AC_SUBST(COVERAGE_LDFLAGS)
 #
 AM_PATH_GTK_3_0
 
+# Compile warnings
+AC_ARG_ENABLE(compile-warnings,
+              AS_HELP_STRING([--enable-compile-warnings=@<:@no/minimum/yes/maximum/error@:>@],
+                             [Turn on compiler warnings]),,
+              [enable_compile_warnings=maximum])
+
+warning_flags=
+
+case "$enable_compile_warnings" in
+no)
+warning_flags=
+;;
+minimum)
+warning_flags="-Wall"
+;;
+yes)
+warning_flags="-wall -Wno-error=deprecated-declarations"
+;;
+maximum|error)
+warning_flags="-Wall -Wno-error=deprecated-declarations -Wempty-body -Wformat-security -Winit-self -Warray-bounds -Wimplicit-function-declaration"
+if test "$enable_compile_warnings" = "error" ; then
+    warning_flags="$warning_flags -Werror"
+fi
+;;
+*)
+AC_MSG_ERROR(Unknown argument '$enable_compile_warnings' to --enable-compile-warnings)
+;;
+esac
+AC_MSG_CHECKING(what warning flags to pass to the C compiler)
+AC_MSG_RESULT($warning_flags)
+
 dnl CFLAGS
-CFLAGS="$CFLAGS -Wall -Werror -Wno-error=deprecated-declarations -Wempty-body -Wformat-security -Winit-self -Warray-bounds -Wimplicit-function-declaration -lm"
+CFLAGS="$CFLAGS $warning_flags $LIBM"
 
 AC_SUBST(BAMFDAEMON_CFLAGS)
 AC_SUBST(BAMFDAEMON_LIBS)
@@ -190,5 +217,6 @@ ${PACKAGE}-${VERSION}
     Headless tests:       ${enable_headless_tests}
     Coverage Reporting:   ${use_gcov}
     Export actions menus: ${enable_export_actions_menu} 
+    Compiler Flags:       ${CFLAGS}
 
 EOF

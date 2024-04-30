@@ -34,21 +34,6 @@ G_BEGIN_DECLS
 
 #define BAMF_TYPE_VIEW (bamf_view_get_type ())
 
-#define BAMF_VIEW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-        BAMF_TYPE_VIEW, BamfView))
-
-#define BAMF_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass),\
-        BAMF_TYPE_VIEW, BamfViewClass))
-
-#define BAMF_IS_VIEW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-        BAMF_TYPE_VIEW))
-
-#define BAMF_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-        BAMF_TYPE_VIEW))
-
-#define BAMF_VIEW_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-        BAMF_TYPE_VIEW, BamfViewClass))
-
 #define BAMF_VIEW_SIGNAL_ACTIVE_CHANGED       "active-changed"
 #define BAMF_VIEW_SIGNAL_RUNNING_CHANGED      "running-changed"
 #define BAMF_VIEW_SIGNAL_STARTING_CHANGED     "starting-changed"
@@ -73,16 +58,7 @@ typedef enum
   BAMF_CLICK_BEHAVIOR_PICKER,
 } BamfClickBehavior;
 
-typedef struct _BamfView        BamfView;
-typedef struct _BamfViewClass   BamfViewClass;
-typedef struct _BamfViewPrivate BamfViewPrivate;
-
-struct _BamfView
-{
-  GInitiallyUnowned parent;
-
-  BamfViewPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE (BamfView, bamf_view, BAMF, VIEW, GInitiallyUnowned);
 
 struct _BamfViewClass
 {
@@ -119,8 +95,6 @@ struct _BamfViewClass
   void (*_view_padding1) (void);
 };
 
-GType      bamf_view_get_type             (void) G_GNUC_CONST;
-
 GList    * bamf_view_get_children  (BamfView *view);
 
 GList    * bamf_view_peek_children (BamfView *view);
@@ -153,7 +127,7 @@ gboolean bamf_view_is_sticky (BamfView *view);
 G_GNUC_DEPRECATED
 BamfClickBehavior bamf_view_get_click_suggestion (BamfView *view);
 
-G_GNUC_DEPRECATED_FOR (bamf_view_user_visible)
+G_GNUC_DEPRECATED_FOR (bamf_view_is_user_visible)
 gboolean bamf_view_user_visible (BamfView *view);
 
 G_END_DECLS
